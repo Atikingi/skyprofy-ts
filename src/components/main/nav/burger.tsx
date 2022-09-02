@@ -2,9 +2,7 @@ import React, { ReactElement } from 'react';
 
 function BurgerLines (): ReactElement<HTMLSpanElement> {
   return (
-        <span className="burger__line">
-
-        </span>
+        <span className="burger__line"></span>
   );
 }
 
