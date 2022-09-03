@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Atikingi/skyprofy-ts/static/css/main.96ac0f09.css",
-    "main.js": "/Atikingi/skyprofy-ts/static/js/main.eb692c58.js",
-    "static/media/Stratos-Regular.woff": "/Atikingi/skyprofy-ts/static/media/Stratos-Regular.d20eb275042a513c8d55.woff",
-    "static/media/Stratos-Regular.woff2": "/Atikingi/skyprofy-ts/static/media/Stratos-Regular.ec4882423f79afa46408.woff2",
-    "index.html": "/Atikingi/skyprofy-ts/index.html",
-    "main.96ac0f09.css.map": "/Atikingi/skyprofy-ts/static/css/main.96ac0f09.css.map",
-    "main.eb692c58.js.map": "/Atikingi/skyprofy-ts/static/js/main.eb692c58.js.map"
+    "main.css": "./static/css/main.9e77fce8.css",
+    "main.js": "./static/js/main.eb692c58.js",
+    "static/media/Stratos-Regular.woff": "./static/media/Stratos-Regular.d20eb275042a513c8d55.woff",
+    "static/media/Stratos-Regular.woff2": "./static/media/Stratos-Regular.ec4882423f79afa46408.woff2",
+    "index.html": "./index.html",
+    "main.9e77fce8.css.map": "./static/css/main.9e77fce8.css.map",
+    "main.eb692c58.js.map": "./static/js/main.eb692c58.js.map"
   },
   "entrypoints": [
-    "static/css/main.96ac0f09.css",
+    "static/css/main.9e77fce8.css",
     "static/js/main.eb692c58.js"
   ]
 }
