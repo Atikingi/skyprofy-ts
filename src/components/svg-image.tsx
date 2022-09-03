@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 
 interface Svg {
   className: string
@@ -6,12 +6,12 @@ interface Svg {
   ariaLabel: string
 }
 
-function SvgImage ({ className, href, ariaLabel }: Svg): ReactElement<HTMLOrSVGImageElement> {
+const SvgImage: FC<Svg> = ({ className, href, ariaLabel }) => {
   return (
         <svg className={className} aria-label={ariaLabel}>
           <use xlinkHref={href}></use>
         </svg>
   );
-}
+};
 
 export default SvgImage;

@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 import SvgImage from '../../../svg-image';
 import { TextsElements } from '../../../../types';
 
-function PlaylistTitles ({ className, text }: TextsElements): ReactElement<HTMLDivElement> {
+const PlaylistTitles: FC<TextsElements> = ({ className, text }) => {
   return (
       <div className={className}>{text}</div>
   );
-}
+};
 
-function PlaylistTitle (): ReactElement<HTMLDivElement> {
+const PlaylistTitle: FC = () => {
   return (
         <div className="content__title playlist-title">
           <PlaylistTitles className={'playlist-title__col col01'} text={'Трек'}/>
@@ -19,6 +19,6 @@ function PlaylistTitle (): ReactElement<HTMLDivElement> {
           </div>
         </div>
   );
-}
+};
 
 export default PlaylistTitle;

@@ -1,13 +1,13 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 import { TextsElements } from '../../../types';
 
-function FilterCategories ({ className, text }: TextsElements): ReactElement<HTMLDivElement> {
+const FilterCategories: FC<TextsElements> = ({ className, text }) => {
   return (
         <div className={className}>{text}</div>
   );
-}
+};
 
-function Filter (): ReactElement<HTMLDivElement> {
+const Filter: FC = () => {
   return (
         <div className="centerblock__filter filter">
             <div className="filter__title">Искать по:</div>
@@ -16,6 +16,6 @@ function Filter (): ReactElement<HTMLDivElement> {
             <FilterCategories className="filter__button button-genre _btn-text" text="жанру"/>
         </div>
   );
-}
+};
 
 export default Filter;

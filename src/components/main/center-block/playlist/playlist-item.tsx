@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 import SvgImage from '../../../svg-image';
 
 interface PlaylistItemProps {
@@ -11,7 +11,7 @@ interface PlaylistItemProps {
   trackTime: string
 }
 
-function PlaylistItem ({ trackTitleLink, trackTitleText, trackAuthorLink, trackAuthorText, trackAlbumLink, trackAlbumText, trackTime }: PlaylistItemProps): ReactElement<HTMLDivElement> {
+const PlaylistItem: FC<PlaylistItemProps> = ({ trackTitleLink, trackTitleText, trackAuthorLink, trackAuthorText, trackAlbumLink, trackAlbumText, trackTime }) => {
   return (
         <div className="playlist__item">
             <div className="playlist__track track">
@@ -38,6 +38,6 @@ function PlaylistItem ({ trackTitleLink, trackTitleText, trackAuthorLink, trackA
             </div>
         </div>
   );
-}
+};
 
 export default PlaylistItem;

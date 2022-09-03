@@ -1,12 +1,12 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 
-function BurgerLines (): ReactElement<HTMLSpanElement> {
+const BurgerLines: FC = () => {
   return (
         <span className="burger__line"></span>
   );
-}
+};
 
-function Burger (): ReactElement<HTMLDivElement> {
+const Burger: FC = () => {
   return (
         <div className="nav__burger burger">
             <BurgerLines/>
@@ -14,6 +14,6 @@ function Burger (): ReactElement<HTMLDivElement> {
             <BurgerLines/>
         </div>
   );
-}
+};
 
 export default Burger;

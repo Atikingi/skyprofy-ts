@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 import Burger from './burger';
 import Menu from './menu';
 
@@ -7,15 +7,15 @@ interface LogoProps {
   alt: string
 }
 
-function Logo ({ src, alt }: LogoProps): ReactElement<HTMLDivElement> {
+const Logo: FC<LogoProps> = ({ src, alt }) => {
   return (
       <div className="nav__logo logo">
           <img className="logo__image" src={src} alt={alt}></img>
       </div>
   );
-}
+};
 
-function Navigation (): ReactElement<HTMLElement> {
+const Navigation: FC = () => {
   return (
       <nav className="main__nav nav">
         <Logo src="img/logo.png" alt="logo"/>
@@ -23,6 +23,6 @@ function Navigation (): ReactElement<HTMLElement> {
         <Menu/>
       </nav>
   );
-}
+};
 
 export default Navigation;

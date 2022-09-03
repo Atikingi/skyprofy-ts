@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 import PlaylistItem from './playlist-item';
 
-function PlaylistItems (): ReactElement<HTMLDivElement> {
+const PlaylistItems: FC = () => {
   return (
         <div className="content__playlist playlist">
             <PlaylistItem trackTitleLink="http://" trackTitleText="Guilt" trackAuthorLink="http://" trackAuthorText="Nero" trackAlbumLink="http://" trackAlbumText="Welcome Reality" trackTime="4:44"/>
@@ -17,6 +17,6 @@ function PlaylistItems (): ReactElement<HTMLDivElement> {
             <PlaylistItem trackTitleLink="http://" trackTitleText="Guilt" trackAuthorLink="http://" trackAuthorText="Nero" trackAlbumLink="http://" trackAlbumText="Welcome Reality" trackTime="4:44"/>
         </div>
   );
-}
+};
 
 export default PlaylistItems;

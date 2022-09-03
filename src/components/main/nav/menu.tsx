@@ -1,19 +1,19 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 
 interface MenuLink {
   href: string
   text: string
 }
 
-function MenuList ({ href, text }: MenuLink): ReactElement<HTMLLIElement> {
+const MenuList: FC<MenuLink> = ({ href, text }) => {
   return (
         <li className="menu__list">
             <a className="menu__link" href={href}>{text}</a>
         </li>
   );
-}
+};
 
-function Menu (): ReactElement<HTMLDivElement> {
+const Menu: FC = () => {
   return (
         <div className="nav__menu menu">
             <ul className="menu__list">
@@ -23,6 +23,6 @@ function Menu (): ReactElement<HTMLDivElement> {
             </ul>
         </div>
   );
-}
+};
 
 export default Menu;

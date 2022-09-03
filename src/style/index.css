@@ -25,6 +25,12 @@ ul li {
   list-style: none;
 }
 
+@font-face {
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"), local("StratosSkyeng"), url("../../public/fonts/stratos/Stratos-Regular.woff2") format("woff2"), url("../../public/fonts/stratos/Stratos-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
 html,
 body {
   width: 100%;
@@ -191,6 +197,7 @@ body {
   font-size: 16px;
   line-height: 24px;
   color: #FFFFFF;
+  outline: none;
 }
 .search__text::placeholder {
   background-color: transparent;
@@ -471,6 +478,7 @@ body {
 .player__btn-next-svg {
   width: 15px;
   height: 14px;
+  fill: child;
   stroke: #D9D9D9;
 }
 .player__btn-repeat {
@@ -586,9 +594,36 @@ body {
 }
 .volume__progress {
   width: 109px;
+  display: flex;
+  align-items: center;
 }
 .volume__progress-line {
-  width: 109px;
+  -webkit-appearance: none;
+  background: transparent;
+}
+.volume__progress-line::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.volume__progress-line::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #1A1A1A;
+  border: 2px solid #FFFFFF;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+.volume__progress-line::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0;
+  border: 2px solid #797979;
+  background: #FFFFFF;
+  border-radius: 2px;
 }
 
 /*# sourceMappingURL=index.css.map */

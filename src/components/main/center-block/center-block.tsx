@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 import Search from './search';
 import Filter from './filter';
 import Content from './content';
 
-function CenterBlock (): ReactElement<HTMLDivElement> {
+const CenterBlock: FC = () => {
   return (
         <div className="main__centerblock centerblock">
             <Search />
@@ -12,6 +12,6 @@ function CenterBlock (): ReactElement<HTMLDivElement> {
             <Content />
         </div>
   );
-}
+};
 
 export default CenterBlock;
