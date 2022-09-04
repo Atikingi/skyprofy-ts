@@ -1,9 +1,5 @@
 import React, { FC } from 'react';
-
-interface MenuLink {
-  href: string
-  text: string
-}
+import { MenuLink } from '../../../types';
 
 const MenuList: FC<MenuLink> = ({ href, text }) => {
   return (

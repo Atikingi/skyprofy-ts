@@ -1,15 +1,6 @@
 import React, { FC } from 'react';
 import SvgImage from '../../../svg-image';
-
-interface PlaylistItemProps {
-  trackTitleLink: string
-  trackTitleText: string
-  trackAuthorLink: string
-  trackAuthorText: string
-  trackAlbumLink: string
-  trackAlbumText: string
-  trackTime: string
-}
+import { PlaylistItemProps } from '../../../../types';
 
 const PlaylistItem: FC<PlaylistItemProps> = ({ trackTitleLink, trackTitleText, trackAuthorLink, trackAuthorText, trackAlbumLink, trackAlbumText, trackTime }) => {
   return (

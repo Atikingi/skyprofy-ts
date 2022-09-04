@@ -1,12 +1,6 @@
 import React, { FC } from 'react';
 import SvgImage from '../svg-image';
-
-interface Track {
-  trackLink: string
-  trackName: string
-  authorLink: string
-  authorName: string
-}
+import { Track } from '../../types';
 
 const PlayerTrack: FC<Track> = ({ trackLink, trackName, authorLink, authorName }) => {
   return (

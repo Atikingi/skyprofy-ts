@@ -1,10 +1,5 @@
 import React, { FC } from 'react';
-
-interface SidebarItem {
-  href: string
-  src: string
-  alt: string
-}
+import { SidebarItem } from '../../../types';
 
 const SidebarListItem: FC <SidebarItem> = ({ href, src, alt }) => {
   return (

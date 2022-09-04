@@ -1,11 +1,7 @@
 import React, { FC } from 'react';
 import Burger from './burger';
 import Menu from './menu';
-
-interface LogoProps {
-  src: string
-  alt: string
-}
+import { LogoProps } from '../../../types';
 
 const Logo: FC<LogoProps> = ({ src, alt }) => {
   return (

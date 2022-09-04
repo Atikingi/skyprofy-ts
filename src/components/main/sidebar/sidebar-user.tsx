@@ -1,8 +1,5 @@
 import React, { FC } from 'react';
-
-interface UserInfo {
-  name: string
-}
+import { UserInfo } from '../../../types';
 
 const SidebarUser: FC<UserInfo> = ({ name }) => {
   return (

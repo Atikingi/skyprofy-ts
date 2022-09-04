@@ -1,12 +1,6 @@
 import React, { FC } from 'react';
 import SvgImage from '../svg-image';
-
-interface ControlButtonsProps {
-  className: string
-  imageClassName: string
-  imageHref: string
-  ariaLabel: string
-}
+import { ControlButtonsProps } from '../../types';
 
 const ControlsButton: FC<ControlButtonsProps> = ({ className, imageClassName, imageHref, ariaLabel }) => {
   return (
