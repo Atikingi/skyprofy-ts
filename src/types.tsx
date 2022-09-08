@@ -3,6 +3,11 @@ export interface TextsElements {
   text: string,
 }
 
+export interface Svg {
+  href: string
+  ariaLabel: string
+}
+
 export interface ControlButtonsProps {
   className: string,
   imageClassName: string,
@@ -15,6 +20,7 @@ export interface Track {
   trackName: string,
   authorLink: string,
   authorName: string,
+  isLoading?: true | false
 }
 
 export interface PlaylistItemProps {
@@ -25,6 +31,7 @@ export interface PlaylistItemProps {
   trackAlbumLink: string,
   trackAlbumText: string,
   trackTime: string,
+  isLoading?: true | false
 }
 
 export interface MenuLink {
@@ -41,8 +48,18 @@ export interface SidebarItem {
   href: string,
   src: string,
   alt: string,
+  isLoading?: true | false
 }
 
 export interface UserInfo {
   name: string,
+}
+
+export interface ShowHideMenu {
+  menuActive: boolean
+}
+
+export interface FilterProps {
+  text: string,
+  isActive: boolean
 }

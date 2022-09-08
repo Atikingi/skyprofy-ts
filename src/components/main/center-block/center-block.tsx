@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
-import Search from './search';
-import Filter from './filter';
+import React from 'react';
+import Search from '../../UI/search/search';
+import Filter from '../../UI/filter/filter';
 import Content from './content';
 
-const CenterBlock: FC = () => {
+const CenterBlock = () => {
   return (
         <div className="main__centerblock centerblock">
             <Search />

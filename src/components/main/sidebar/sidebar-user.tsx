@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { UserInfo } from '../../../types';
 
-const SidebarUser: FC<UserInfo> = ({ name }) => {
+const SidebarUser = ({ name }: UserInfo) => {
   return (
         <div className="sidebar__personal">
             <p className="sidebar__personal-name">{name}</p>

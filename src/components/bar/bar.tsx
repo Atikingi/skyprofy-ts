@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 import Player from './player';
 import PlayerVolume from './player-volume';
 
-const Bar: FC = () => {
+const Bar = () => {
   return (
       <div className="bar">
         <div className="bar__content">

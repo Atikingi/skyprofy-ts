@@ -1,22 +1,23 @@
-import React, { FC } from 'react';
-import { SidebarItem } from '../../../types';
+import React, { useEffect, useState } from 'react';
+import SidebarListItem from './sidebar-item';
 
-const SidebarListItem: FC <SidebarItem> = ({ href, src, alt }) => {
-  return (
-      <div className="sidebar__item">
-        <a className="sidebar__link" href={href}>
-          <img className="sidebar__img" src={src} alt={alt}/>
-        </a>
-      </div>
-  );
-};
+const SidebarList = () => {
+  const [status, setStatus] = useState<boolean>(true);
 
-const SidebarList: FC = () => {
+  useEffect(() => {
+    const loadTimer = setTimeout(() => {
+      setStatus(false);
+    }, 5000);
+    return () => {
+      clearTimeout(loadTimer);
+    };
+  });
+
   return (
         <div className="sidebar__list">
-          <SidebarListItem href="#" src="img/playlist01.png" alt="day's playlist"/>
-          <SidebarListItem href="#" src="img/playlist02.png" alt="100th hits"/>
-          <SidebarListItem href="#" src="img/playlist03.png" alt="Indi charge"/>
+          <SidebarListItem href="#" src="img/playlist01.png" alt="day's playlist" isLoading={status}/>
+          <SidebarListItem href="#" src="img/playlist02.png" alt="100th hits" isLoading={status}/>
+          <SidebarListItem href="#" src="img/playlist03.png" alt="Indie charge" isLoading={status}/>
         </div>
   );
 };
