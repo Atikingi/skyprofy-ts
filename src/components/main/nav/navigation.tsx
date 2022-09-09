@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import Menu from './menu';
-import { LogoProps } from '../../../types';
 import BurgerLines from './burger';
 
-const Logo = ({ src, alt }: LogoProps) => {
+interface PropsType {
+  src: string,
+  alt: string,
+}
+
+const Logo = ({ src, alt }: PropsType) => {
   return (
       <div className="nav__logo logo">
           <img className="logo__image" src={src} alt={alt}></img>

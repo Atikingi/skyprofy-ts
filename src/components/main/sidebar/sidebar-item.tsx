@@ -1,7 +1,13 @@
 import React from 'react';
-import { SidebarItem } from '../../../types';
 
-const SidebarListItem = ({ href, src, alt, isLoading }: SidebarItem) => {
+interface PropsType {
+  href: string,
+  src: string,
+  alt: string,
+  isLoading?: true | false
+}
+
+const SidebarListItem = ({ href, src, alt, isLoading }: PropsType) => {
   return (
     <div
       className={

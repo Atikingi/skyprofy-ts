@@ -1,7 +1,10 @@
 import React from 'react';
-import { UserInfo } from '../../../types';
 
-const SidebarUser = ({ name }: UserInfo) => {
+interface PropsType {
+  name: string,
+}
+
+const SidebarUser = ({ name }: PropsType) => {
   return (
         <div className="sidebar__personal">
             <p className="sidebar__personal-name">{name}</p>

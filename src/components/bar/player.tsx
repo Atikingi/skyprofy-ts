@@ -3,7 +3,7 @@ import PlayerControls from './player-controls';
 import PlayerTrack from './player-track';
 
 const Player = () => {
-  const [status, setStatus] = useState<boolean>(true);
+  const [isLoading, setStatus] = useState<boolean>(true);
 
   useEffect(() => {
     const loadTimer = setTimeout(() => {
@@ -16,7 +16,7 @@ const Player = () => {
   return (
         <div className="bar__player player">
             <PlayerControls/>
-            <PlayerTrack isLoading={status} trackLink="https://" trackName="Ты та..." authorLink="https://" authorName="Баста"/>
+            <PlayerTrack isLoading={isLoading} trackLink="https://" trackName="Ты та..." authorLink="https://" authorName="Баста"/>
         </div>
   );
 };

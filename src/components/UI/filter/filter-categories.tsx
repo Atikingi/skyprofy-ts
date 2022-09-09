@@ -1,17 +1,17 @@
 import React from 'react';
-import { FilterProps } from '../../../types';
 
-const FilterCategories = ({ text, isActive }: FilterProps) => {
+interface PropsType {
+  text: string,
+  isActive: boolean
+}
+
+const FilterCategories = ({ text, isActive }: PropsType) => {
   return (
     <div
-      className={
-        isActive
-          ? 'filter__button filter__button_active _btn-text'
-          : 'filter__button _btn-text'
-      }
+      className={`filter__button _btn-text ${isActive ? 'filter__button_active' : ''}`}
     >
       <div>{text}</div>
-      <div className={isActive ? 'filter__button-count filter__button-count_active' : 'filter__button-count'}>5</div>
+      <div className={`filter__button-count ${isActive ? 'filter__button-count_active' : ''}`}>5</div>
     </div>
   );
 };

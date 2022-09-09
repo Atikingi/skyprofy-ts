@@ -1,7 +1,12 @@
 import React from 'react';
-import { MenuLink, ShowHideMenu } from '../../../types';
+import { ShowHideMenu } from '../../../types';
 
-const MenuList = ({ href, text }: MenuLink) => {
+interface PropsType {
+  href: string,
+  text: string,
+}
+
+const MenuList = ({ href, text }: PropsType) => {
   return (
         <li className="menu__list">
             <a className="menu__link" href={href}>{text}</a>

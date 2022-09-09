@@ -1,26 +1,33 @@
 import React from 'react';
 import SvgImage from '../svg-image';
-import { Track } from '../../types';
 import SkeletonImg from '../UI/skeletons/skeleton-img';
 import SkeletonTitles from '../UI/skeletons/skeleton-titles';
 
-const PlayerTrack = ({ trackLink, trackName, authorLink, authorName, isLoading }: Track) => {
+interface PropsType {
+  trackLink: string,
+  trackName: string,
+  authorLink: string,
+  authorName: string,
+  isLoading: boolean
+}
+
+const PlayerTrack = ({ trackLink, trackName, authorLink, authorName, isLoading = true }: PropsType) => {
   return (
         <div className="player__track-play track-play">
           <div className="track-play__contain">
             <div className="track-play__image">
-              {isLoading === true
+              {isLoading
                 ? <SkeletonImg/>
                 : <div className="track-play__svg">
                 <SvgImage href="img/icon/sprite.svg#icon-note" ariaLabel="music"/>
               </div>}
             </div>
             <div className="track-play__author">
-              {isLoading === true ? <SkeletonTitles/> : <a className="track-play__author-link" href={trackLink}>{trackName}</a>
+              {isLoading ? <SkeletonTitles/> : <a className="track-play__author-link" href={trackLink}>{trackName}</a>
               }
             </div>
             <div className="track-play__album">
-              {isLoading === true ? <SkeletonTitles/> : <a className="track-play__album-link" href={authorLink}>{authorName}</a>}
+              {isLoading ? <SkeletonTitles/> : <a className="track-play__album-link" href={authorLink}>{authorName}</a>}
             </div>
           </div>
           <div className="track-play__like-dis">

@@ -1,8 +1,14 @@
 import React from 'react';
 import SvgImage from '../svg-image';
-import { ControlButtonsProps } from '../../types';
 
-const ControlsButton = ({ className, imageClassName, imageHref, ariaLabel }: ControlButtonsProps) => {
+interface PropsType {
+  className: string,
+  imageClassName: string,
+  imageHref: string,
+  ariaLabel: string,
+}
+
+const ControlsButton = ({ className, imageClassName, imageHref, ariaLabel }: PropsType) => {
   return (
             <div className={className}>
               <div className={imageClassName}>
