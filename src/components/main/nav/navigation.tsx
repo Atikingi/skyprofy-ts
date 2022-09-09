@@ -1,9 +1,13 @@
-import React, { FC } from 'react';
-import Burger from './burger';
+import React, { useState } from 'react';
 import Menu from './menu';
-import { LogoProps } from '../../../types';
+import BurgerLines from './burger';
 
-const Logo: FC<LogoProps> = ({ src, alt }) => {
+interface PropsType {
+  src: string,
+  alt: string,
+}
+
+const Logo = ({ src, alt }: PropsType) => {
   return (
       <div className="nav__logo logo">
           <img className="logo__image" src={src} alt={alt}></img>
@@ -11,12 +15,18 @@ const Logo: FC<LogoProps> = ({ src, alt }) => {
   );
 };
 
-const Navigation: FC = () => {
+const Navigation = () => {
+  const [menuActive, setMenuActive] = useState<boolean>(false);
+
   return (
       <nav className="main__nav nav">
         <Logo src="img/logo.png" alt="logo"/>
-        <Burger/>
-        <Menu/>
+        <div className="nav__burger burger" onClick={() => setMenuActive((!menuActive))}>
+          <BurgerLines menuActive={menuActive}/>
+          <BurgerLines menuActive={menuActive}/>
+          <BurgerLines menuActive={menuActive}/>
+        </div>
+        <Menu menuActive={menuActive} />
       </nav>
   );
 };

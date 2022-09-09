@@ -23,6 +23,7 @@
     "rules": {
         "semi": ["error", "always"],
         "@typescript-eslint/semi": "off",
-        "@typescript-eslint/member-delimiter-style": "off"
+        "@typescript-eslint/member-delimiter-style": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
     }
 }

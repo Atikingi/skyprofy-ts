@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 import PlaylistTitle from './playlist/playlist-title';
 import PlaylistItems from './playlist/playlist-items';
 
-const Content: FC = () => {
+const Content = () => {
   return (
         <div className="centerblock__content">
             <PlaylistTitle />

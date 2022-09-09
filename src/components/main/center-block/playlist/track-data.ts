@@ -30,11 +30,11 @@ export const trackData: PlaylistItemProps[] = [
   },
   {
     trackTitleLink: 'https://',
-    trackTitleText: 'Non Stop',
+    trackTitleText: 'Non Stop now',
     trackAuthorLink: 'https://',
     trackAuthorText: 'Стоункат, Psychopath',
     trackAlbumLink: 'https://',
-    trackAlbumText: 'Non Stop',
+    trackAlbumText: 'Non Stop now',
     trackTime: '4:44'
   },
   {
@@ -102,11 +102,11 @@ export const trackData: PlaylistItemProps[] = [
   },
   {
     trackTitleLink: 'https://',
-    trackTitleText: 'Guilt',
+    trackTitleText: '3 september',
     trackAuthorLink: 'https://',
-    trackAuthorText: 'Nero',
+    trackAuthorText: 'Shafutinskiy',
     trackAlbumLink: 'https://',
-    trackAlbumText: 'Welcome Reality',
+    trackAlbumText: '3 september',
     trackTime: '4:44'
   }
 ];

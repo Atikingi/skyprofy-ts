@@ -1,7 +1,10 @@
-import React, { FC } from 'react';
-import { UserInfo } from '../../../types';
+import React from 'react';
 
-const SidebarUser: FC<UserInfo> = ({ name }) => {
+interface PropsType {
+  name: string,
+}
+
+const SidebarUser = ({ name }: PropsType) => {
   return (
         <div className="sidebar__personal">
             <p className="sidebar__personal-name">{name}</p>

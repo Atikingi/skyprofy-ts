@@ -1,7 +1,12 @@
-import React, { FC } from 'react';
-import { MenuLink } from '../../../types';
+import React from 'react';
+import { ShowHideMenu } from '../../../types';
 
-const MenuList: FC<MenuLink> = ({ href, text }) => {
+interface PropsType {
+  href: string,
+  text: string,
+}
+
+const MenuList = ({ href, text }: PropsType) => {
   return (
         <li className="menu__list">
             <a className="menu__link" href={href}>{text}</a>
@@ -9,9 +14,9 @@ const MenuList: FC<MenuLink> = ({ href, text }) => {
   );
 };
 
-const Menu: FC = () => {
+const Menu = ({ menuActive }: ShowHideMenu) => {
   return (
-        <div className="nav__menu menu">
+  <div className={menuActive ? 'nav__menu_active menu' : 'nav__menu menu'}>
             <ul className="menu__list">
                 <MenuList href="#" text="Главное"/>
                 <MenuList href="#" text="Мой плейлист"/>

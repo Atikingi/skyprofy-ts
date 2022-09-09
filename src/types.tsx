@@ -1,20 +1,6 @@
-export interface TextsElements {
-  className: string,
-  text: string,
-}
-
-export interface ControlButtonsProps {
-  className: string,
-  imageClassName: string,
-  imageHref: string,
-  ariaLabel: string,
-}
-
-export interface Track {
-  trackLink: string,
-  trackName: string,
-  authorLink: string,
-  authorName: string,
+export interface Svg {
+  href: string
+  ariaLabel: string
 }
 
 export interface PlaylistItemProps {
@@ -25,24 +11,9 @@ export interface PlaylistItemProps {
   trackAlbumLink: string,
   trackAlbumText: string,
   trackTime: string,
+  isLoading?: true | false
 }
 
-export interface MenuLink {
-  href: string,
-  text: string,
-}
-
-export interface LogoProps {
-  src: string,
-  alt: string,
-}
-
-export interface SidebarItem {
-  href: string,
-  src: string,
-  alt: string,
-}
-
-export interface UserInfo {
-  name: string,
+export interface ShowHideMenu {
+  menuActive: boolean
 }

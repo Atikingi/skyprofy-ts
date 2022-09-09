@@ -1,19 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { ShowHideMenu } from '../../../types';
 
-const BurgerLines: FC = () => {
+const BurgerLines = ({ menuActive }: ShowHideMenu) => {
   return (
-        <span className="burger__line"></span>
+        <span className={menuActive ? 'burger__line_active' : 'burger__line'}></span>
   );
 };
 
-const Burger: FC = () => {
-  return (
-        <div className="nav__burger burger">
-            <BurgerLines/>
-            <BurgerLines/>
-            <BurgerLines/>
-        </div>
-  );
-};
-
-export default Burger;
+export default BurgerLines;

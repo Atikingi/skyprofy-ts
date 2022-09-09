@@ -1,16 +1,24 @@
-import React, { FC } from 'react';
+import React from 'react';
 import SvgImage from '../svg-image';
-import { ControlButtonsProps } from '../../types';
 
-const ControlsButton: FC<ControlButtonsProps> = ({ className, imageClassName, imageHref, ariaLabel }) => {
+interface PropsType {
+  className: string,
+  imageClassName: string,
+  imageHref: string,
+  ariaLabel: string,
+}
+
+const ControlsButton = ({ className, imageClassName, imageHref, ariaLabel }: PropsType) => {
   return (
             <div className={className}>
-                <SvgImage className={imageClassName} href={imageHref} ariaLabel={ariaLabel}/>
+              <div className={imageClassName}>
+                <SvgImage href={imageHref} ariaLabel={ariaLabel}/>
+              </div>
             </div>
   );
 };
 
-const PlayerControls: FC = () => {
+const PlayerControls = () => {
   return (
         <div className="player__controls">
             <ControlsButton className="player__btn-prev _btn" imageClassName="player__btn-prev-svg" imageHref="img/icon/sprite.svg#icon-prev" ariaLabel="prev"/>
