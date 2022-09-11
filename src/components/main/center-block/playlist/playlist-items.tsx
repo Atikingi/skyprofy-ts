@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import PlaylistItem from './playlist-item';
+import PlaylistItem from './playlist-item/playlist-item';
 import { trackData } from './track-data';
+import * as S from './playlist-items.style';
 
 const PlaylistItems = () => {
   const [status, setStatus] = useState<boolean>(true);
@@ -14,7 +15,7 @@ const PlaylistItems = () => {
     };
   });
   return (
-    <div className="content__playlist playlist">
+    <S.PlaylistContent>
       {trackData.map((track) =>
         <PlaylistItem
           key={track.trackTitleText}
@@ -28,7 +29,7 @@ const PlaylistItems = () => {
           isLoading={status}
         />
       )}
-    </div>
+    </S.PlaylistContent>
   );
 };
 

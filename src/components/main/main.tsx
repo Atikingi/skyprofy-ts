@@ -3,16 +3,17 @@ import Navigation from './nav/navigation';
 import CenterBlock from './center-block/center-block';
 import Sidebar from './sidebar/sidebar';
 import Bar from '../bar/bar';
+import { Main } from './main.style';
 
-const Main = () => {
+const MainElement = () => {
   return (
-        <main className="main">
-            <Navigation />
-            <CenterBlock/>
-            <Sidebar/>
-            <Bar/>
-        </main>
+    <Main>
+      <Navigation/>
+      <CenterBlock/>
+      <Sidebar/>
+      <Bar/>
+    </Main>
   );
 };
 
-export default Main;
+export default MainElement;

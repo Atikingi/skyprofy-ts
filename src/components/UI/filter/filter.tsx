@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import FilterCategories from './filter-categories';
-import FilterItem from './filter-item';
+import FilterCategories from './filter-categories/filter-categories';
+import FilterItem from './filter-item/filter-item';
 import { trackData } from '../../main/center-block/playlist/track-data';
-import FilterItemYears from './filter-item-years';
+import FilterItemYears from './filter-item-year/filter-item-years';
+import * as S from './filter.style';
 
 const Filter = () => {
   const [isActive, setActive] = useState<'author' | 'year' | 'genre' | null>(
@@ -28,21 +29,17 @@ const Filter = () => {
   ];
 
   return (
-    <div className="centerblock__filter filter">
-      <div className="filter__title">Искать по:</div>
-      <div
-        className="filter__button-wrapper"
+    <S.FilterWrapper>
+      <S.FilterTitle>Искать по:</S.FilterTitle>
+      <S.FilterButtonWrapper
         onClick={() =>
           setActive((prevState) => (prevState === null ? 'author' : null))
         }
       >
         <FilterCategories text="исполнителю" isActive={isActive === 'author'} />
-        <div
-          className={`filter__items-wrapper ${
-            isActive === 'author' ? 'filter__items-wrapper_active' : ''
-          }`}
+        <S.FilterItemsWrapperAuthor isActive={isActive}
         >
-          <div className="filter__items">
+          <S.FilterItems>
             {trackData.map((item) => (
               <FilterItem
                 key={item.trackTitleText}
@@ -50,45 +47,35 @@ const Filter = () => {
                 href="#"
               />
             ))}
-          </div>
-        </div>
-      </div>
+          </S.FilterItems>
+        </S.FilterItemsWrapperAuthor>
+      </S.FilterButtonWrapper>
 
-      <div
-        className="filter__button-wrapper"
+      <S.FilterButtonWrapper
         onClick={() =>
           setActive((prevState) => (prevState === null ? 'year' : null))
         }
       >
         <FilterCategories text="году выпуска" isActive={isActive === 'year'} />
-        <div
-          className={`filter__items-year-wrapper ${
-            isActive === 'year' ? 'filter__items-year-wrapper_active' : ''
-          }`}
-        >
+        <S.FilterItemsWrapperYear isActive={isActive}>
           <FilterItemYears />
-        </div>
-      </div>
-      <div
-        className="filter__button-wrapper"
+        </S.FilterItemsWrapperYear>
+      </S.FilterButtonWrapper>
+      <S.FilterButtonWrapper
         onClick={() =>
           setActive((prevState) => (prevState === null ? 'genre' : null))
         }
       >
         <FilterCategories text="жанру" isActive={isActive === 'genre'} />
-        <div
-          className={`filter__items-wrapper ${
-            isActive === 'genre' ? 'filter__items-wrapper_active' : ''
-          }`}
-        >
-          <div className="filter__items">
+        <S.FilterItemsWrapperGenre isActive={isActive}>
+          <S.FilterItems>
             {genre.map((item) => (
               <FilterItem key={item} text={item} href="#" />
             ))}
-          </div>
-        </div>
-      </div>
-    </div>
+          </S.FilterItems>
+        </S.FilterItemsWrapperGenre>
+      </S.FilterButtonWrapper>
+    </S.FilterWrapper>
   );
 };
 

@@ -1,15 +1,16 @@
 import React from 'react';
 import SidebarUser from './sidebar-user';
 import SidebarList from './sidebar-list';
+import * as S from './sidebar.style';
 
 const Sidebar = () => {
   return (
-        <div className="main__sidebar sidebar">
+        <S.Sidebar>
             <SidebarUser name="Igumentsev Nikita"/>
-            <div className="sidebar__block">
+            <S.SidebarBlock>
                 <SidebarList />
-            </div>
-        </div>
+            </S.SidebarBlock>
+        </S.Sidebar>
   );
 };
 

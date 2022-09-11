@@ -1,18 +1,19 @@
 import React from 'react';
-import Player from './player';
-import PlayerVolume from './player-volume';
+import Player from './player/player';
+import PlayerVolume from './player-volume/player-volume';
+import * as S from './bar.style';
 
 const Bar = () => {
   return (
-      <div className="bar">
-        <div className="bar__content">
-            <div className="bar__player-progress"></div>
-            <div className="bar__player-block">
+      <S.Bar>
+        <S.BarContent>
+            <S.BarPlayerProgress></S.BarPlayerProgress>
+            <S.BarPlayerBlock>
                 <Player/>
                 <PlayerVolume/>
-            </div>
-        </div>
-      </div>
+            </S.BarPlayerBlock>
+        </S.BarContent>
+      </S.Bar>
   );
 };
 

@@ -1,28 +1,22 @@
 import React from 'react';
+import * as S from './sidebar.style';
+import * as Skeleton from '../../UI/skeletons/skeletons.style';
 
 interface PropsType {
-  href: string,
-  src: string,
-  alt: string,
-  isLoading?: true | false
+  href: string;
+  src: string;
+  alt: string;
+  isLoading: boolean;
 }
 
 const SidebarListItem = ({ href, src, alt, isLoading }: PropsType) => {
   return (
-    <div
-      className={
-        (isLoading === true) ? 'sidebar__item sidebar__item_load' : 'sidebar__item'
-      }
-    >
-      <a className="sidebar__link" href={href}>
-        <img
-          className={
-            (isLoading === true) ? 'sidebar__img sidebar__img_load' : 'sidebar__img'
-          }
-          src={src}
-          alt={alt}
-        />
-      </a>
+    <div>
+       <S.SidebarItem>
+        <S.SidebarLink href={href}>
+          {isLoading ? <Skeleton.Skeleton/> : <S.SidebarImage src={src} alt={alt}/>}
+        </S.SidebarLink>
+      </S.SidebarItem>
     </div>
   );
 };

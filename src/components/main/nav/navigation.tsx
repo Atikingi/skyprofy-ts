@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Menu from './menu';
-import BurgerLines from './burger';
+import Menu from './menu/menu';
+import BurgerLines from './burger/burger';
+import * as S from './nav.style';
 
 interface PropsType {
   src: string,
@@ -9,9 +10,9 @@ interface PropsType {
 
 const Logo = ({ src, alt }: PropsType) => {
   return (
-      <div className="nav__logo logo">
-          <img className="logo__image" src={src} alt={alt}></img>
-      </div>
+      <S.NavigationLogo>
+          <S.LogoImage src={src} alt={alt}></S.LogoImage>
+      </S.NavigationLogo>
   );
 };
 
@@ -19,15 +20,15 @@ const Navigation = () => {
   const [menuActive, setMenuActive] = useState<boolean>(false);
 
   return (
-      <nav className="main__nav nav">
+      <S.Navigation>
         <Logo src="img/logo.png" alt="logo"/>
-        <div className="nav__burger burger" onClick={() => setMenuActive((!menuActive))}>
+        <S.Burger onClick={() => setMenuActive((!menuActive))}>
           <BurgerLines menuActive={menuActive}/>
           <BurgerLines menuActive={menuActive}/>
           <BurgerLines menuActive={menuActive}/>
-        </div>
+        </S.Burger>
         <Menu menuActive={menuActive} />
-      </nav>
+      </S.Navigation>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import * as S from './sidebar.style';
 
 interface PropsType {
   name: string,
@@ -6,10 +7,10 @@ interface PropsType {
 
 const SidebarUser = ({ name }: PropsType) => {
   return (
-        <div className="sidebar__personal">
-            <p className="sidebar__personal-name">{name}</p>
-            <div className="sidebar__avatar"></div>
-        </div>
+        <S.SidebarUser>
+            <S.SidebarUserName>{name}</S.SidebarUserName>
+            <S.SidebarUserAvatar></S.SidebarUserAvatar>
+        </S.SidebarUser>
   );
 };
 

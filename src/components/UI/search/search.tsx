@@ -1,14 +1,15 @@
 import React from 'react';
-import SvgImage from '../../svg-image';
+import SvgImage from '../../svg/svg-image';
+import * as S from './search.style';
 
 const Search = () => {
   return (
-        <div className="centerblock__search search">
-          <div className="search__svg">
+        <S.SearchBlock>
+          <S.SearchSVGWrapper>
             <SvgImage href="img/icon/sprite.svg#icon-search" ariaLabel="search"/>
-          </div>
-            <input className="search__text" type="search" placeholder="Поиск" name="search"/>
-        </div>
+          </S.SearchSVGWrapper>
+            <S.SearchInput type="search" placeholder="Поиск" name="search"/>
+        </S.SearchBlock>
   );
 };
 
