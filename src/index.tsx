@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from './components/main/main';
-import Footer from './components/footer';
-import './style/index.scss';
+import Main from './components/main';
+import * as S from './style/style';
+import GlobalStyles from './style/global';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,12 +10,13 @@ const root = ReactDOM.createRoot(
 
 const Container: FC = () => {
   return (
-    <div className="wrapper">
-      <div className="container">
+
+    <S.Wrapper>
+      <S.Container>
         <Main />
-          <Footer />
-      </div>
-    </div>
+      </S.Container>
+      <GlobalStyles/>
+    </S.Wrapper>
   );
 };
 

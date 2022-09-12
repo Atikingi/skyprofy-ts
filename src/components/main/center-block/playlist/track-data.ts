@@ -8,7 +8,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Nero',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Welcome Reality',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -17,7 +18,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Dynoro, Outwork, Mr. Gee',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Elektro',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -26,7 +28,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Ali Bakgor',
     trackAlbumLink: 'https://',
     trackAlbumText: 'I’m Fire',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -35,7 +38,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Стоункат, Psychopath',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Non Stop now',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -44,7 +48,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Стоункат, Psychopath',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Non Stop',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -53,7 +58,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Jaded, Will Clarke, AR/CO',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Run Run',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -62,7 +68,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Blue Foundation, Zeds Dead',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Eyes on Fire',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -71,7 +78,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'HYBIT, Mr. Black, Offer Nissim, Hi Profile',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Mucho Bien',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -80,7 +88,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'minthaze',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Captivating',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -89,7 +98,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Calvin Harris, Disciples',
     trackAlbumLink: 'https://',
     trackAlbumText: 'How Deep Is Your Love',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -98,7 +108,8 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Tom Boxer',
     trackAlbumLink: 'https://',
     trackAlbumText: 'Soundz Made in Romania',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   },
   {
     trackTitleLink: 'https://',
@@ -107,6 +118,7 @@ export const trackData: PlaylistItemProps[] = [
     trackAuthorText: 'Shafutinskiy',
     trackAlbumLink: 'https://',
     trackAlbumText: '3 september',
-    trackTime: '4:44'
+    trackTime: '4:44',
+    isLoading: true
   }
 ];

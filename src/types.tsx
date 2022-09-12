@@ -11,7 +11,7 @@ export interface PlaylistItemProps {
   trackAlbumLink: string,
   trackAlbumText: string,
   trackTime: string,
-  isLoading?: true | false
+  isLoading: boolean
 }
 
 export interface ShowHideMenu {
