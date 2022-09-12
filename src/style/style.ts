@@ -1,17 +1,18 @@
 import styled from 'styled-components';
+import { COLORS } from './colors';
 
 export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-  background-color: #383838;
+  background-color: ${COLORS['primary-background']};
 `;
 
 export const Container = styled.div`
-  max-width: 1920px;
+  width: 100vw;
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  background-color: #181818;
+  background-color: ${COLORS['secondary-background']};
   overflow: hidden;
 `;

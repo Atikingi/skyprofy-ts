@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from './components/main/main';
+import Main from './components/main';
 import * as S from './style/style';
 import GlobalStyles from './style/global';
 
