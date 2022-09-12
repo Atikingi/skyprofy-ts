@@ -14,7 +14,7 @@ const SidebarListItem = ({ href, src, alt, isLoading }: Props) => {
   if (isLoading) {
     sidebarItem = <Skeleton.Skeleton/>;
   } else {
-    <S.SidebarImage src={src} alt={alt}/>;
+    sidebarItem = <S.SidebarImage src={src} alt={alt}/>;
   }
   return (
     <div>
