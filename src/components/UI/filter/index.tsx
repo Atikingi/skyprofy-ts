@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FilterCategories from './filter-categories';
 import FilterItem from './filter-item';
-import { trackData } from '../../main/center-block/playlist/track-data';
+import { trackData } from '../../../mocks/track-data';
 import FilterItemYears from './filter-item-year';
 import * as S from './style';
 
@@ -40,7 +40,7 @@ const Filter = () => {
         <S.FilterItemsWrapperAuthor isActive={isActive}
         >
           <S.FilterItems>
-            {trackData.map((item) => (
+            {trackData[0].tracks.map((item) => (
               <FilterItem
                 key={item.trackTitleText}
                 text={item.trackAuthorText}

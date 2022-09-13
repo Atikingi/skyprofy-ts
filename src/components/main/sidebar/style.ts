@@ -33,16 +33,12 @@ export const SidebarItem = styled.div`
 
   background-color: ${COLORS['sidebar-background']};
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const SidebarImage = styled.img`
   width: 100%;
   height: auto;
-`;
-
-export const SidebarLink = styled.a`
-  width: 100%;
-  height: 100%;
 `;
 
 export const SidebarUser = styled.div`

@@ -1,22 +1,25 @@
-import React, { FC } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from './components/main';
 import * as S from './style/style';
 import GlobalStyles from './style/global';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './components/routes/routes';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const Container: FC = () => {
+const Container = () => {
+  const isLogin = Boolean(localStorage.getItem('token'));
   return (
-
-    <S.Wrapper>
-      <S.Container>
-        <Main />
-      </S.Container>
-      <GlobalStyles/>
-    </S.Wrapper>
+    <BrowserRouter>
+      <S.Wrapper>
+        <S.Container>
+          <AppRoutes isLogin={isLogin}/>
+        </S.Container>
+        <GlobalStyles />
+      </S.Wrapper>
+    </BrowserRouter>
   );
 };
 

@@ -22,7 +22,7 @@ const TrackTitle = ({
           : <S.TrackTitleImage>
             <S.TrackSVGWrapper>
               <SvgImage
-                href="img/icon/sprite.svg#icon-note"
+                href="/img/icon/sprite.svg#icon-note"
                 ariaLabel={'music'}
               />
             </S.TrackSVGWrapper>

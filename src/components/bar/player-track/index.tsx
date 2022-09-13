@@ -28,7 +28,7 @@ const PlayerTrack = ({
   } else {
     trackIcon = (
       <S.TrackPlayIconWrapper>
-        <SvgImage href="img/icon/sprite.svg#icon-note" ariaLabel="music" />
+        <SvgImage href="/img/icon/sprite.svg#icon-note" ariaLabel="music" />
       </S.TrackPlayIconWrapper>
     );
     trackTitleAuthor = (
@@ -52,13 +52,13 @@ const PlayerTrack = ({
       <S.TrackPlayLikeDisWrapper>
         <S.TrackPlayLikeButton>
           <S.TrackPlayLikeDisButtonIconWrapper>
-            <SvgImage href="img/icon/sprite.svg#icon-like" ariaLabel="like" />
+            <SvgImage href="/img/icon/sprite.svg#icon-like" ariaLabel="like" />
           </S.TrackPlayLikeDisButtonIconWrapper>
         </S.TrackPlayLikeButton>
         <S.TrackPlayDisButton>
           <S.TrackPlayLikeDisButtonIconWrapper>
             <SvgImage
-              href="img/icon/sprite.svg#icon-dislike"
+              href="/img/icon/sprite.svg#icon-dislike"
               ariaLabel="dislike"
             />
           </S.TrackPlayLikeDisButtonIconWrapper>
