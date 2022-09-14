@@ -14,6 +14,12 @@ export interface PlaylistItemProps {
   isLoading: boolean
 }
 
+export interface PlaylistProps {
+  id: string | number,
+  title: string,
+  tracks: PlaylistItemProps[]
+}
+
 export interface ShowHideMenu {
   menuActive: boolean
 }

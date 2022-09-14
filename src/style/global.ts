@@ -31,6 +31,13 @@ export default createGlobalStyle`
   ul li {
     list-style: none;
   }
+  
+  main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
   @font-face {
     font-family: 'StratosSkyeng';
@@ -44,8 +51,9 @@ export default createGlobalStyle`
   @keyframes load {
     from {
       left: -150px;
-    } to {
-        left: 100%;
-      }
+    }
+    to {
+      left: 100%;
+    }
   }
 `;

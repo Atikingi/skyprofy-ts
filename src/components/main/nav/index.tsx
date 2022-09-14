@@ -21,7 +21,7 @@ const Navigation = () => {
 
   return (
       <S.Navigation>
-        <Logo src="img/logo.png" alt="logo"/>
+        <Logo src="/skyprofy-ts/img/logo.png" alt="logo"/>
         <S.Burger onClick={() => setMenuActive((!menuActive))}>
           <BurgerLines menuActive={menuActive}/>
           <BurgerLines menuActive={menuActive}/>

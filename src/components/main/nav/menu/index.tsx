@@ -1,27 +1,29 @@
 import React from 'react';
 import { ShowHideMenu } from '../../../../types';
 import * as S from './style';
+import { NavLink } from 'react-router-dom';
 
 interface Props {
-  href: string;
   text: string;
 }
 
-const MenuList = ({ href, text }: Props) => {
-  return (
-    <S.MenuItem>
-      <S.MenuLink href={href}>{text}</S.MenuLink>
-    </S.MenuItem>
-  );
+const MenuList = ({ text }: Props) => {
+  return <S.MenuItem>{text}</S.MenuItem>;
 };
 
 const Menu = ({ menuActive }: ShowHideMenu) => {
   return (
     <S.Menu active={menuActive}>
       <S.MenuList>
-        <MenuList href="#" text="Главное" />
-        <MenuList href="#" text="Мой плейлист" />
-        <MenuList href="#" text="Войти" />
+        <NavLink to="/skyprofy-ts">
+          <MenuList text="Главное" />
+        </NavLink>
+        <NavLink to="/skyprofy-ts/personal">
+          <MenuList text="Мой плейлист" />
+        </NavLink>
+        <NavLink to="/skyprofy-ts">
+          <MenuList text="Выйти"/>
+        </NavLink>
       </S.MenuList>
     </S.Menu>
   );

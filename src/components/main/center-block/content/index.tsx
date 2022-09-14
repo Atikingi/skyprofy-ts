@@ -1,13 +1,18 @@
 import React from 'react';
 import PlaylistTitle from '../playlist/playlist-title';
-import Index from '../playlist';
+import PlaylistContent from '../playlist';
 import * as S from '../style';
+import { PlaylistProps } from '../../../../types';
 
-const Content = () => {
+interface Props {
+  playlist: PlaylistProps[]
+}
+
+const Content = ({ playlist }: Props) => {
   return (
         <S.CenterBlockContent>
             <PlaylistTitle />
-            <Index />
+            <PlaylistContent playlist={playlist}/>
         </S.CenterBlockContent>
   );
 };

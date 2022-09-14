@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PlaylistItem from './playlist-item';
-import { trackData } from './track-data';
 import * as S from './style';
+import { PlaylistProps, PlaylistItemProps } from '../../../../types';
 
-const Index = () => {
-  const [status, setStatus] = useState<boolean>(true);
+interface Props {
+  playlist: PlaylistProps[]
+}
+
+const PlaylistContent = ({ playlist }: Props) => {
+  const [currentPlaylist]: PlaylistProps[] = playlist;
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const loadTimer = setTimeout(() => {
-      setStatus(false);
+      setIsLoading(false);
     }, 5000);
     return () => {
       clearTimeout(loadTimer);
@@ -16,21 +22,20 @@ const Index = () => {
   });
   return (
     <S.PlaylistContent>
-      {trackData.map((track) =>
+      {currentPlaylist.tracks.map(({ trackTitleText, trackTitleLink, trackAuthorLink, trackAuthorText, trackAlbumLink, trackAlbumText, trackTime }: PlaylistItemProps) =>
         <PlaylistItem
-          key={track.trackTitleText}
-          trackTitleLink={track.trackTitleLink}
-          trackTitleText={track.trackTitleText}
-          trackAuthorLink={track.trackAuthorLink}
-          trackAuthorText={track.trackAuthorText}
-          trackAlbumLink={track.trackAlbumLink}
-          trackAlbumText={track.trackAlbumText}
-          trackTime={track.trackTime}
-          isLoading={status}
-        />
-      )}
+          key={trackTitleText}
+          trackTitleLink={trackTitleLink}
+          trackTitleText={trackTitleText}
+          trackAuthorLink={trackAuthorLink}
+          trackAuthorText={trackAuthorText}
+          trackAlbumLink={trackAlbumLink}
+          trackAlbumText={trackAlbumText}
+          trackTime={trackTime}
+          isLoading={isLoading}
+        />)}
     </S.PlaylistContent>
   );
 };
 
-export default Index;
+export default PlaylistContent;

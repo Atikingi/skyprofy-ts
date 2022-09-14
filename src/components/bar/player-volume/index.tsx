@@ -8,7 +8,7 @@ const PlayerVolume = () => {
           <S.PlayerVolumeContent>
             <S.PlayerVolumeImageWrapper>
               <S.PlayerVolumeSVGWrapper>
-                <SvgImage href="img/icon/sprite.svg#icon-volume" ariaLabel="volume"/>
+                <SvgImage href="/skyprofy-ts/img/icon/sprite.svg#icon-volume" ariaLabel="volume"/>
               </S.PlayerVolumeSVGWrapper>
             </S.PlayerVolumeImageWrapper>
             <S.PlayerVolumeProgressWrapper>
