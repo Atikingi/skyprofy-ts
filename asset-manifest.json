@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.js": "/skyprofy-ts/static/js/main.7ae82140.js",
-    "static/media/sprite.svg": "/skyprofy-ts/static/media/sprite.f75b6e7a30c7375ecc76db0839667686.svg",
+    "main.js": "/skyprofy-ts/static/js/main.6b78fce4.js",
     "index.html": "/skyprofy-ts/index.html",
-    "main.7ae82140.js.map": "/skyprofy-ts/static/js/main.7ae82140.js.map"
+    "main.6b78fce4.js.map": "/skyprofy-ts/static/js/main.6b78fce4.js.map"
   },
   "entrypoints": [
-    "static/js/main.7ae82140.js"
+    "static/js/main.6b78fce4.js"
   ]
 }
