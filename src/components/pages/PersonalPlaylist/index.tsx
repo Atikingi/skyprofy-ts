@@ -1,25 +1,19 @@
 import React from 'react';
-import * as S from '../main/style';
-import Navigation from '../../main/nav';
 import { CenterBlock, CenterBlockTitle } from '../../main/center-block/style';
 import Search from '../../UI/search';
 import Content from '../../main/center-block/content';
 import { PersonalPlaylistItems } from '../../../mocks/personal-playlist';
-import Bar from '../../bar';
-import Sidebar from '../../main/sidebar';
+import Layout from '../../layout/Layout';
 
 const PersonalPlaylist = () => {
   return (
-    <S.Main>
-      <Navigation/>
+    <Layout>
       <CenterBlock>
         <Search/>
         <CenterBlockTitle>Мой плейлист</CenterBlockTitle>
         <Content playlist={PersonalPlaylistItems}/>
       </CenterBlock>
-      <Sidebar/>
-      <Bar/>
-    </S.Main>
+    </Layout>
   );
 };
 

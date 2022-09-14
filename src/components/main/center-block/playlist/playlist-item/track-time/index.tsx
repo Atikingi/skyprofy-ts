@@ -15,7 +15,7 @@ const TrackTime = ({ isLoading, trackTime }: Props) => {
         ? <Skeleton />
         : <S.TrackTimeWrapper>
           <S.TrackTimeSVGWRapper>
-            <SvgImage href="/img/icon/sprite.svg#icon-like" ariaLabel="time" />
+            <SvgImage href="/skyprofy-ts/img/icon/sprite.svg#icon-like" ariaLabel="time" />
           </S.TrackTimeSVGWRapper>
           <S.TrackTimeText>{trackTime}</S.TrackTimeText>
         </S.TrackTimeWrapper>

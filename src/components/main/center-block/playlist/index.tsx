@@ -8,13 +8,13 @@ interface Props {
 }
 
 const PlaylistContent = ({ playlist }: Props) => {
-  const currentPlaylist: PlaylistProps = playlist[0];
+  const [currentPlaylist]: PlaylistProps[] = playlist;
 
-  const [isLoading, setLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const loadTimer = setTimeout(() => {
-      setLoading(false);
+      setIsLoading(false);
     }, 5000);
     return () => {
       clearTimeout(loadTimer);
@@ -22,16 +22,16 @@ const PlaylistContent = ({ playlist }: Props) => {
   });
   return (
     <S.PlaylistContent>
-      {currentPlaylist.tracks.map((track: PlaylistItemProps) =>
+      {currentPlaylist.tracks.map(({ trackTitleText, trackTitleLink, trackAuthorLink, trackAuthorText, trackAlbumLink, trackAlbumText, trackTime }: PlaylistItemProps) =>
         <PlaylistItem
-          key={track.trackTitleText}
-          trackTitleLink={track.trackTitleLink}
-          trackTitleText={track.trackTitleText}
-          trackAuthorLink={track.trackAuthorLink}
-          trackAuthorText={track.trackAuthorText}
-          trackAlbumLink={track.trackAlbumLink}
-          trackAlbumText={track.trackAlbumText}
-          trackTime={track.trackTime}
+          key={trackTitleText}
+          trackTitleLink={trackTitleLink}
+          trackTitleText={trackTitleText}
+          trackAuthorLink={trackAuthorLink}
+          trackAuthorText={trackAuthorText}
+          trackAlbumLink={trackAlbumLink}
+          trackAlbumText={trackAlbumText}
+          trackTime={trackTime}
           isLoading={isLoading}
         />)}
     </S.PlaylistContent>

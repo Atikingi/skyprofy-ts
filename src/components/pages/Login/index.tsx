@@ -1,9 +1,12 @@
 import React from 'react';
 import Login from '../../login';
+import LoginLayout from '../../layout/LoginLayout';
 
 const LoginPage = () => {
   return (
-    <Login/>
+    <LoginLayout>
+      <Login/>
+    </LoginLayout>
   );
 };
 

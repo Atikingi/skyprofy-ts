@@ -15,13 +15,13 @@ const Menu = ({ menuActive }: ShowHideMenu) => {
   return (
     <S.Menu active={menuActive}>
       <S.MenuList>
-        <NavLink to="/">
+        <NavLink to="/skyprofy-ts">
           <MenuList text="Главное" />
         </NavLink>
-        <NavLink to="/personal">
+        <NavLink to="/skyprofy-ts/personal">
           <MenuList text="Мой плейлист" />
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/skyprofy-ts">
           <MenuList text="Выйти"/>
         </NavLink>
       </S.MenuList>

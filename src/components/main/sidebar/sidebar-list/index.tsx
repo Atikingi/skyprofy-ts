@@ -17,23 +17,23 @@ const SidebarList = () => {
 
   return (
     <S.SidebarList>
-      <Link to="/playlist/1">
+      <Link to="/skyprofy-ts/playlist/1">
         <SidebarListItem
-          src="/img/playlist01.png"
+          src="/skyprofy-ts/img/playlist01.png"
           alt="day's playlist"
           isLoading={isLoading}
         />
       </Link>
-      <Link to="/playlist/2">
+      <Link to="/skyprofy-ts/playlist/2">
         <SidebarListItem
-          src="/img/playlist02.png"
+          src="/skyprofy-ts/img/playlist02.png"
           alt="100th hits"
           isLoading={isLoading}
         />
       </Link>
-      <Link to="/playlist/3">
+      <Link to="/skyprofy-ts/playlist/3">
         <SidebarListItem
-          src="/img/playlist03.png"
+          src="/skyprofy-ts/img/playlist03.png"
           alt="Indie charge"
           isLoading={isLoading}
         />

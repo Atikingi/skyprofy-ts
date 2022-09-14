@@ -10,7 +10,7 @@ const PlaylistTitle = () => {
           <S.PlaylistTitleCol03>АЛЬБОМ</S.PlaylistTitleCol03>
           <S.PlaylistTitleCol04>
             <S.PlaylistSVGWrapper>
-              <SvgImage href="/img/icon/sprite.svg#icon-watch" ariaLabel='time'/>
+              <SvgImage href="/skyprofy-ts/img/icon/sprite.svg#icon-watch" ariaLabel='time'/>
             </S.PlaylistSVGWrapper>
           </S.PlaylistTitleCol04>
         </S.PlaylistContentTitle>

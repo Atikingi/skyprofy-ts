@@ -6,7 +6,7 @@ interface Props {
   isAllowed: boolean
 }
 
-export const ProtectedRoute = ({ redirectPath = '/login', isAllowed }: Props) => {
+export const ProtectedRoute = ({ redirectPath = 'skyprofy-ts/Login', isAllowed }: Props) => {
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace={true}/>;
   }
