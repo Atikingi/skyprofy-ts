@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.js": "/skyprofy-ts/static/js/main.52e447fd.js",
+    "main.js": "/skyprofy-ts/static/js/main.88693952.js",
+    "static/media/Stratos-Regular.woff": "/skyprofy-ts/static/media/Stratos-Regular.d20eb275042a513c8d55.woff",
+    "static/media/Stratos-Regular.woff2": "/skyprofy-ts/static/media/Stratos-Regular.ec4882423f79afa46408.woff2",
     "index.html": "/skyprofy-ts/index.html",
-    "main.52e447fd.js.map": "/skyprofy-ts/static/js/main.52e447fd.js.map"
+    "main.88693952.js.map": "/skyprofy-ts/static/js/main.88693952.js.map"
   },
   "entrypoints": [
-    "static/js/main.52e447fd.js"
+    "static/js/main.88693952.js"
   ]
 }
