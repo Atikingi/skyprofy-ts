@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/skyprofy-ts/static/js/main.1205880b.js",
+    "main.js": "/skyprofy-ts/static/js/main.52e447fd.js",
     "index.html": "/skyprofy-ts/index.html",
-    "main.1205880b.js.map": "/skyprofy-ts/static/js/main.1205880b.js.map"
+    "main.52e447fd.js.map": "/skyprofy-ts/static/js/main.52e447fd.js.map"
   },
   "entrypoints": [
-    "static/js/main.1205880b.js"
+    "static/js/main.52e447fd.js"
   ]
 }
