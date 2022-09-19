@@ -3,8 +3,10 @@ import styled from 'styled-components';
 const COLORS = {
   'search-border': '#4E4E4E',
   'search-icon': '#FFFFFF',
-  'search-input': '#FFFFFF',
-  'search-placeholder': '#FFFFFF'
+  'search-input-dark': '#FFFFFF',
+  'search-input-light': '#000000',
+  'search-placeholder-dark': '#FFFFFF',
+  'search-placeholder-light': '#000000'
 };
 
 export const SearchBlock = styled.div`
@@ -24,7 +26,7 @@ export const SearchIconWrapper = styled.div`
   fill: transparent;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled.input<{isDarkTheme: boolean}>`
   flex-grow: 100;
   background-color: transparent;
   border: none;
@@ -33,12 +35,12 @@ export const SearchInput = styled.input`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: ${COLORS['search-input']};
+  color: ${props => props.isDarkTheme ? COLORS['search-input-dark'] : COLORS['search-input-light']};
   outline: none;
 
   &::placeholder {
     background-color: transparent;
-    color: ${COLORS['search-placeholder']};
+    color: ${props => props.isDarkTheme ? COLORS['search-placeholder-dark'] : COLORS['search-placeholder-light']};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

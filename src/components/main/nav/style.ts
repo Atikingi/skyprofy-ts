@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
-export const Navigation = styled.div`
+const COLORS = {
+  'dark-background': '#181818',
+  'light-background': '#FFFFFF'
+};
+
+export const Navigation = styled.div<{ isDarkTheme: boolean }>`
   width: 244px;
-  background-color: #181818;
+  background-color: ${props => props.isDarkTheme ? COLORS['dark-background'] : COLORS['light-background']};
   padding: 20px 0 20px 36px;
 `;
 

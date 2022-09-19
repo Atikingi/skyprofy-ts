@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import FilterCategories from './filter-categories';
 import FilterItem from './filter-item';
 import { trackData } from '../../../mocks/track-data';
 import FilterItemYears from './filter-item-year';
 import * as S from './style';
+import { ThemeContext } from '../../context/themeContext';
 
 const Filter = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
   const [isActive, setActive] = useState<'author' | 'year' | 'genre' | null>(
     null
   );
@@ -30,7 +32,7 @@ const Filter = () => {
 
   return (
     <S.FilterWrapper>
-      <S.FilterTitle>Искать по:</S.FilterTitle>
+      <S.FilterTitle isDarkTheme={isDarkTheme}>Искать по:</S.FilterTitle>
       <S.FilterButtonWrapper
         onClick={() =>
           setActive((prevState) => (prevState === null ? 'author' : null))

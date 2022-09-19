@@ -12,11 +12,20 @@ export const BarContent = styled.div`
   flex-direction: column;
 `;
 
-export const BarPlayerProgress = styled.input<{ gradientValue: string }>`
+export const BarPlayerProgress = styled.input<{
+  gradientValue: string;
+  isDarkTheme: boolean;
+}>`
   width: 100%;
   height: 6px;
   -webkit-appearance: none;
-  background: linear-gradient(90deg, #57459d ${props => (props.gradientValue !== '') ? props.gradientValue : '0'}%, rgba(46,46,46,1) ${props => (props.gradientValue !== '') ? props.gradientValue : '0'}%);
+  background: linear-gradient(
+    90deg,
+    #57459d
+      ${(props) => (props.gradientValue !== '' ? props.gradientValue : '0')}%,
+    ${(props) => (props.isDarkTheme ? 'rgba(46,46,46,1)' : '#D9D9D9')}
+      ${(props) => (props.gradientValue !== '' ? props.gradientValue : '0')}%
+  );
   cursor: pointer;
 
   ::-webkit-slider-thumb {

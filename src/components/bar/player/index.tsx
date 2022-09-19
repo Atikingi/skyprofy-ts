@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PlayerControls from '../player-controls';
 import PlayerTrack from '../player-track';
 import * as S from './style';
 import PlayerVolume from '../player-volume';
+import { ThemeContext } from '../../context/themeContext';
 
 const Player = () => {
   const [isLoading, setStatus] = useState<boolean>(true);
@@ -15,6 +16,10 @@ const Player = () => {
       clearTimeout(loadTimer);
     };
   });
+
+  // Theme
+
+  const { isDarkTheme } = useContext(ThemeContext);
 
   // Player control
 
@@ -87,6 +92,7 @@ const Player = () => {
   return (
     <S.BarContent>
       <S.BarPlayerProgress
+        isDarkTheme={isDarkTheme}
         type="range"
         step="1"
         min="0"

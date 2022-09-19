@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'track-lnk': '#FFFFFF'
+  'track-link-dark': '#FFFFFF',
+  'track-link-light': '#000000'
 };
 
 export const TrackAuthor = styled.div`
@@ -13,11 +14,11 @@ export const TrackAuthor = styled.div`
   overflow: hidden;
 `;
 
-export const TrackAuthorLink = styled.a`
+export const TrackAuthorLink = styled.a<{isDarkTheme: boolean}>`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: ${COLORS['track-lnk']};
+  color: ${props => props.isDarkTheme ? COLORS['track-link-dark'] : COLORS['track-link-light']};
   text-align: left;
 `;

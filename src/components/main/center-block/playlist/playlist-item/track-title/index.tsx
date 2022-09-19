@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as S from './style';
 import SvgImage from '../../../../../svg';
 import { Skeleton, SkeletonImage } from '../../../../../UI/skeletons/style';
+import { ThemeContext } from '../../../../../context/themeContext';
 
 interface Props {
   isLoading: boolean,
@@ -14,12 +15,14 @@ const TrackTitle = ({
   trackTitleLink,
   trackTitleText
 }: Props) => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
     <S.TrackTitle>
       <S.TrackImageWrapper>
         {isLoading
           ? <SkeletonImage />
-          : <S.TrackTitleImage>
+          : <S.TrackTitleImage isDarkTheme={isDarkTheme}>
             <S.TrackSVGWrapper>
               <SvgImage
                 href='/skyprofy-ts/img/icon/sprite.svg#icon-note'
@@ -32,7 +35,7 @@ const TrackTitle = ({
       <S.TrackTitleText>
         {isLoading
           ? <Skeleton />
-          : <S.TrackTitleLink href={trackTitleLink}>
+          : <S.TrackTitleLink isDarkTheme={isDarkTheme} href={trackTitleLink}>
             {trackTitleText}
             <S.TrackTitleSpan></S.TrackTitleSpan>
           </S.TrackTitleLink>

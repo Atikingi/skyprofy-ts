@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'slider-thumb-border': '#FFFFFF',
-  'slider-background': '#1A1A1A',
+  'slider-thumb-border-dark': '#FFFFFF',
+  'slider-thumb-border-light': '#C4C4C4',
+  'slider-background-dark': '#1A1A1A',
+  'slider-background-light': '#FFFFFF',
   'slider-runnable-track-border': '#797979',
-  'slider-runnable-track-background': '#FFFFFF'
+  'slider-runnable-track-background-dark': '#FFFFFF',
+  'slider-runnable-track-background-light': '#AD61FF'
 };
 
 export const PlayerVolumeBlock = styled.div`
@@ -41,7 +44,7 @@ export const PlayerVolumeProgressWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const PlayerVolumeProgressLine = styled.input`
+export const PlayerVolumeProgressLine = styled.input<{isDarkTheme: boolean}>`
   -webkit-appearance: none;
   background: transparent;
   cursor: pointer;
@@ -57,8 +60,8 @@ export const PlayerVolumeProgressLine = styled.input`
 
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: ${COLORS['slider-background']};
-    border: 2px solid ${COLORS['slider-thumb-border']};
+    background: ${props => props.isDarkTheme ? COLORS['slider-background-dark'] : COLORS['slider-background-light']};
+    border: 2px solid ${props => props.isDarkTheme ? COLORS['slider-thumb-border-dark'] : COLORS['slider-thumb-border-light']};
     width: 13px;
     height: 13px;
     border-radius: 50%;
@@ -71,7 +74,7 @@ export const PlayerVolumeProgressLine = styled.input`
     height: 0;
 
     border: 2px solid ${COLORS['slider-runnable-track-border']};
-    background: ${COLORS['slider-runnable-track-background']};
+    background: ${props => props.isDarkTheme ? COLORS['slider-runnable-track-background-dark'] : COLORS['slider-runnable-track-background-light']};
     border-radius: 2px;
   }
 `;

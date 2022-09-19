@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'player-background': '#313131',
+  'player-background-dark': '#313131',
+  'player-background-light': '#F6F4F4',
   'player-button': '#FFFFFF',
   'player-button-hover': '#ACACAC',
-  'player-link': '#FFFFFF',
+  'player-link-dark': '#FFFFFF',
+  'player-link-light': '#000000',
   'player-icon-secondary': '#696969'
 };
 
@@ -21,11 +23,11 @@ export const TrackPlayContain = styled.div`
   align-items: center;
 `;
 
-export const TrackPlayImageWrapper = styled.div`
+export const TrackPlayImageWrapper = styled.div<{isDarkTheme: boolean}>`
   position: relative;
   width: 51px;
   height: 51px;
-  background-color: ${COLORS['player-background']};
+  background-color: ${props => props.isDarkTheme ? COLORS['player-background-dark'] : COLORS['player-background-light']};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,12 +51,12 @@ export const TrackPlayAuthor = styled.div`
   overflow: hidden;
 `;
 
-export const TrackPlayAuthorLink = styled.a`
+export const TrackPlayAuthorLink = styled.a<{isDarkTheme: boolean}>`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: ${COLORS['player-link']};
+  color: ${props => props.isDarkTheme ? COLORS['player-link-dark'] : COLORS['player-link-light']};
   white-space: nowrap;
 `;
 
@@ -66,12 +68,12 @@ export const TrackPlayAlbum = styled.div`
   overflow: hidden;
 `;
 
-export const TrackPlayAlbumLink = styled.a`
+export const TrackPlayAlbumLink = styled.a<{isDarkTheme: boolean}>`
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 24px;
-  color: ${COLORS['player-link']};
+  color: ${props => props.isDarkTheme ? COLORS['player-link-dark'] : COLORS['player-link-light']};
 `;
 
 export const TrackPlayLikeDisWrapper = styled.div`

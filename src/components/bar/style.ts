@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'bar-background': 'rgba(28, 28, 28, 0.5)'
+  'bar-background': 'transparent'
 };
 
 export const Bar = styled.div`

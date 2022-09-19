@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const COLORS = {
+  'title-dark': '#FFFFFF',
+  'title-light': '#000000',
   'filter-wrapper-background': '#313131',
   scrollbar: '#4B4949',
   'scrollbar-thumb': '#FFFFFF'
@@ -13,12 +15,13 @@ export const FilterWrapper = styled.div`
   margin-bottom: 51px;
 `;
 
-export const FilterTitle = styled.div`
+export const FilterTitle = styled.div<{isDarkTheme: boolean}>`
+  margin-right: 15px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  margin-right: 15px;
+  color: ${props => props.isDarkTheme ? COLORS['title-dark'] : COLORS['title-light']};
 `;
 
 export const FilterButtonWrapper = styled.div`

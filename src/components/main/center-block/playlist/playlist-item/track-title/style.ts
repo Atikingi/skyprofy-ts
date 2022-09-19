@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'track-title': '#313131',
-  'track-link': '#FFFFFF',
+  'track-title-dark': '#313131',
+  'track-title-light': '#F6F4F4',
+  'track-link-dark': '#FFFFFF',
+  'track-link-light': '#000000',
   'track-icon': '#4E4E4E',
   'track-text': '#4E4E4E'
 };
@@ -25,11 +27,11 @@ export const TrackImageWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const TrackTitleImage = styled.div`
+export const TrackTitleImage = styled.div<{isDarkTheme: boolean}>`
   width: 51px;
   height: 51px;
   padding: 16px;
-  background: ${COLORS['track-title']};
+  background: ${props => props.isDarkTheme ? COLORS['track-title-dark'] : COLORS['track-title-light']};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,12 +52,12 @@ export const TrackTitleText = styled.div`
   overflow: hidden;
 `;
 
-export const TrackTitleLink = styled.a`
+export const TrackTitleLink = styled.a<{isDarkTheme: boolean}>`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: ${COLORS['track-link']};
+  color: ${props => props.isDarkTheme ? COLORS['track-link-dark'] : COLORS['track-link-light']};
 `;
 
 export const TrackTitleSpan = styled.span`

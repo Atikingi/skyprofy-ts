@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const COLORS = {
+  'title-dark': '#FFFFFF',
+  'title-light': '#000000'
+};
+
 export const CenterBlock = styled.div`
   width: auto;
   flex-grow: 3;
@@ -11,11 +16,12 @@ export const CenterBlockContent = styled.div`
   flex-direction: column;
 `;
 
-export const CenterBlockTitle = styled.h2`
+export const CenterBlockTitle = styled.h2<{isDarkTheme: boolean}>`
+  margin-bottom: 45px;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
   letter-spacing: -0.8px;
-  margin-bottom: 45px;
+  color: ${props => props.isDarkTheme ? COLORS['title-dark'] : COLORS['title-light']};
 `;
