@@ -23,7 +23,7 @@ const Player = () => {
   const [isVolumeOn, setIsVolumeOn] = useState<boolean>(true);
 
   const audioRef = useRef(new Audio('/skyprofy-ts/music/never-gonna.mp3'));
-  const interval: any = useRef();
+  const progressBarInterval = useRef<number | null>(null);
 
   const { duration } = audioRef.current;
   const progressByPercent = (trackProgress / duration) * 100;
@@ -33,9 +33,9 @@ const Player = () => {
   };
 
   const startProgressTimer = (): void => {
-    clearInterval(interval.current);
+    clearProgressBarInterval();
 
-    interval.current = setInterval(() => {
+    progressBarInterval.current = window.setInterval(() => {
       setTrackProgress(audioRef.current.currentTime);
 
       if (audioRef.current.ended) {
@@ -44,8 +44,15 @@ const Player = () => {
     }, 1000);
   };
 
+  const clearProgressBarInterval = () => {
+    if (typeof progressBarInterval.current === 'number') {
+      clearInterval(progressBarInterval.current);
+    }
+  };
+
   const onThumbChange = (value: string) => {
-    clearInterval(interval.current);
+    clearProgressBarInterval();
+
     audioRef.current.currentTime = Number(value);
     setTrackProgress(Number(value));
     startProgressTimer();
@@ -73,7 +80,7 @@ const Player = () => {
       startProgressTimer();
     } else {
       audioRef.current.pause();
-      clearInterval(interval.current);
+      clearProgressBarInterval();
     }
   }, [isPlaying]);
 
