@@ -28,9 +28,10 @@ export const PlayerVolumeImageWrapper = styled.div`
 `;
 
 export const PlayerVolumeSVGWrapper = styled.div`
-  width: 13px;
+  width: 18px;
   height: 18px;
   fill: transparent;
+  cursor: pointer;
 `;
 
 export const PlayerVolumeProgressWrapper = styled.div`

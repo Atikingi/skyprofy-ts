@@ -41,9 +41,9 @@ export default createGlobalStyle`
 
   @font-face {
     font-family: 'StratosSkyeng';
-    src: local('StratosSkyeng'), local('StratosSkyeng'),
-    url('../../public/fonts/stratos/Stratos-Regular.woff2') format('woff2'),
-    url('../../public/fonts/stratos/Stratos-Regular.woff') format('woff');
+    src: local('StratosSkyeng'),
+    url('../fonts/stratos/Stratos-Regular.woff2') format('font-woff2'),
+    url('../fonts/stratos/Stratos-Regular.woff2') format('font-woff');
     font-weight: 400;
     font-style: normal;
   }
