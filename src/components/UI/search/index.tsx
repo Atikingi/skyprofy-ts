@@ -6,16 +6,11 @@ import { ThemeContext } from '../../context/themeContext';
 const Search = () => {
   const { isDarkTheme } = useContext(ThemeContext);
 
-  const searchIcon = () => {
-    return isDarkTheme
-      ? '/skyprofy-ts/img/icon/sprite.svg#icon-search'
-      : '/skyprofy-ts/img/icon/sprite.svg#icon-search-light';
-  };
   return (
     <S.SearchBlock>
-      <S.SearchIconWrapper>
+      <S.SearchIconWrapper isDarkTheme={isDarkTheme}>
         <SvgImage
-          href={searchIcon()}
+          href='/skyprofy-ts/img/icon/sprite.svg#icon-search'
           ariaLabel="search"
         />
       </S.SearchIconWrapper>

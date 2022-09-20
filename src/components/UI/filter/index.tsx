@@ -39,9 +39,9 @@ const Filter = () => {
         }
       >
         <FilterCategories text="исполнителю" isActive={isActive === 'author'} />
-        <S.FilterItemsWrapperAuthor isActive={isActive}
+        <S.FilterItemsWrapperAuthor isDarkTheme={isDarkTheme} isActive={isActive}
         >
-          <S.FilterItems>
+          <S.FilterItems isDarkTheme={isDarkTheme}>
             {trackData[0].tracks.map((item) => (
               <FilterItem
                 key={item.trackTitleText}
@@ -59,7 +59,7 @@ const Filter = () => {
         }
       >
         <FilterCategories text="году выпуска" isActive={isActive === 'year'} />
-        <S.FilterItemsWrapperYear isActive={isActive}>
+        <S.FilterItemsWrapperYear isDarkTheme={isDarkTheme} isActive={isActive}>
           <FilterItemYears />
         </S.FilterItemsWrapperYear>
       </S.FilterButtonWrapper>
@@ -69,8 +69,8 @@ const Filter = () => {
         }
       >
         <FilterCategories text="жанру" isActive={isActive === 'genre'} />
-        <S.FilterItemsWrapperGenre isActive={isActive}>
-          <S.FilterItems>
+        <S.FilterItemsWrapperGenre isDarkTheme={isDarkTheme} isActive={isActive}>
+          <S.FilterItems isDarkTheme={isDarkTheme}>
             {genre.map((item) => (
               <FilterItem key={item} text={item} href="#" />
             ))}

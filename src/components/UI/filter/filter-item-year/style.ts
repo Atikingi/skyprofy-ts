@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
-const COLORS = {
-  'filter-year': '#FFFFFF'
-};
-
 export const FilterItemsYearWrapper = styled.div`
   display: flex;
 `;
 
-export const FilterYearLabel = styled.label`
+export const FilterYearLabel = styled.label<{ isDarkTheme: boolean }>`
+  --color: ${props => props.isDarkTheme ? '#FFFFFF' : '#000000'};
   margin-left: 10px;
   margin-right: 19px;
 
@@ -16,5 +13,5 @@ export const FilterYearLabel = styled.label`
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
-  color: ${COLORS['filter-year']};
+  color: var(--color);
 `;

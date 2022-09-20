@@ -54,12 +54,12 @@ const PlayerTrack = ({
       </S.TrackPlayContain>
       <S.TrackPlayLikeDisWrapper>
         <S.TrackPlayLikeButton>
-          <S.TrackPlayLikeDisButtonIconWrapper>
+          <S.TrackPlayLikeDisButtonIconWrapper isDarkTheme={isDarkTheme}>
             <SvgImage href="/skyprofy-ts/img/icon/sprite.svg#icon-like" ariaLabel="like" />
           </S.TrackPlayLikeDisButtonIconWrapper>
         </S.TrackPlayLikeButton>
         <S.TrackPlayDisButton>
-          <S.TrackPlayLikeDisButtonIconWrapper>
+          <S.TrackPlayLikeDisButtonIconWrapper isDarkTheme={isDarkTheme}>
             <SvgImage
               href="/skyprofy-ts/img/icon/sprite.svg#icon-dislike"
               ariaLabel="dislike"

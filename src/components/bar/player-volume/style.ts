@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'slider-thumb-border-dark': '#FFFFFF',
-  'slider-thumb-border-light': '#C4C4C4',
-  'slider-background-dark': '#1A1A1A',
-  'slider-background-light': '#FFFFFF',
-  'slider-runnable-track-border': '#797979',
-  'slider-runnable-track-background-dark': '#FFFFFF',
-  'slider-runnable-track-background-light': '#AD61FF'
+  'slider-runnable-track-border': '#797979'
 };
 
 export const PlayerVolumeBlock = styled.div`
@@ -30,11 +24,13 @@ export const PlayerVolumeImageWrapper = styled.div`
   margin-right: 17px;
 `;
 
-export const PlayerVolumeSVGWrapper = styled.div`
+export const PlayerVolumeSVGWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#D9D9D9' : '#B1B1B1'};
   width: 18px;
   height: 18px;
-  fill: transparent;
+  fill: currentColor;
   cursor: pointer;
+  color: var(--color);
 `;
 
 export const PlayerVolumeProgressWrapper = styled.div`
@@ -60,8 +56,11 @@ export const PlayerVolumeProgressLine = styled.input<{isDarkTheme: boolean}>`
 
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: ${props => props.isDarkTheme ? COLORS['slider-background-dark'] : COLORS['slider-background-light']};
-    border: 2px solid ${props => props.isDarkTheme ? COLORS['slider-thumb-border-dark'] : COLORS['slider-thumb-border-light']};
+    --bg-color: ${props => props.isDarkTheme ? '#1A1A1A' : '#FFFFFF'};
+    --border-color: ${props => props.isDarkTheme ? '#FFFFFF' : '#979696'};
+    
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
     width: 13px;
     height: 13px;
     border-radius: 50%;
@@ -70,11 +69,12 @@ export const PlayerVolumeProgressLine = styled.input<{isDarkTheme: boolean}>`
   }
 
   ::-webkit-slider-runnable-track {
+    --bg-color: ${props => props.isDarkTheme ? '#FFFFFF' : '#AD61FF'};
+    
     width: 100%;
     height: 0;
-
     border: 2px solid ${COLORS['slider-runnable-track-border']};
-    background: ${props => props.isDarkTheme ? COLORS['slider-runnable-track-background-dark'] : COLORS['slider-runnable-track-background-light']};
+    background: var(--bg-color);
     border-radius: 2px;
   }
 `;

@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 const COLORS = {
   'sidebar-background': '#313131',
-  'sidebar-name-dark': '#ffffff',
-  'sidebar-name-light': '#000000',
   'sidebar-avatar': '#313131'
 };
 
@@ -51,11 +49,12 @@ export const SidebarUser = styled.div`
 `;
 
 export const SidebarUserName = styled.p<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#ffffff' : '#000000'};
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: ${props => props.isDarkTheme ? COLORS['sidebar-name-dark'] : COLORS['sidebar-name-light']};
+  color: var(--color);
   margin-right: 16px;
 `;
 

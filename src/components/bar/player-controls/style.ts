@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-const COLORS = {
-  'player-icon': '#D9D9D9',
-  'player-icon-secondary': '#696969',
-  'player-icon-hover': '#cccccc'
-};
-
 export const PlayerControls = styled.div`
   display: flex;
   flex-direction: row;
@@ -18,51 +12,67 @@ export const PlayerButton = styled.div`
   align-items: center;
 `;
 
-export const PrevIconWrapper = styled.div`
+export const PrevIconWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#D9D9D9' : '#B1B1B1'};
   width: 15px;
   height: 14px;
   margin-right: 23px;
   cursor: pointer;
+  fill: currentColor;
+  stroke: currentColor;
+  color: var(--color);
 `;
 
-export const PlayIconWrapper = styled.div`
+export const PlayIconWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#D9D9D9' : '#B1B1B1'};
   width: 22px;
   height: 20px;
   margin-right: 23px;
-  fill: ${COLORS['player-icon']};
+  fill: currentColor;
+  stroke: currentColor;
   cursor: pointer;
+  color: var(--color);
 `;
 
-export const NextIconWrapper = styled.div`
+export const NextIconWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#D9D9D9' : '#B1B1B1'};
   width: 15px;
   height: 14px;
   margin-right: 28px;
-  fill: ${COLORS['player-icon']};
+  fill: currentColor;
+  stroke: currentColor;
   cursor: pointer;
+  color: var(--color);
 `;
 
-export const RepeatIconWrapper = styled.div`
+export const RepeatIconWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#696969' : '#B1B1B1'};
+  --color-hover: ${props => props.isDarkTheme ? '#ACACAC' : '#707070'};
   width: 18px;
   height: 12px;
   fill: transparent;
-  stroke: ${COLORS['player-icon-secondary']};
+  stroke: currentColor;
   margin-right: 24px;
   cursor: pointer;
+  color: var(--color);
   
   :hover {
-    stroke: ${COLORS['player-icon-hover']};
+    color: var(--color-hover);
   }
 `;
 
-export const ShuffleIconWrapper = styled.div`
+export const ShuffleIconWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#696969' : '#B1B1B1'};
+  --color-hover: ${props => props.isDarkTheme ? '#ACACAC' : '#707070'};
   width: 19px;
   height: 12px;
   fill: transparent;
-  stroke: ${COLORS['player-icon-secondary']};
+  stroke: currentColor;
   margin-right: 24px;
   cursor: pointer;
+  color: var(--color);
   
   :hover {
-    stroke: ${COLORS['player-icon-hover']};;
+    color: var(--color-hover);
   }
 `;

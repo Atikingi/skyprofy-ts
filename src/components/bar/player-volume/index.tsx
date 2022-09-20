@@ -18,25 +18,15 @@ const PlayerVolume = ({
 }: Props) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
-  const changeVolumeIcon = () => {
-    return isDarkTheme
-      ? '/skyprofy-ts/img/icon/sprite.svg#icon-volume-dark'
-      : '/skyprofy-ts/img/icon/sprite.svg#icon-volume-light';
-  };
-
-  const changeVolumeOffIcon = () => {
-    return isDarkTheme
-      ? '/skyprofy-ts/img/icon/sprite.svg#icon-volume-off-dark'
-      : '/skyprofy-ts/img/icon/sprite.svg#icon-volume-off-light';
-  };
-
   return (
     <S.PlayerVolumeBlock>
       <S.PlayerVolumeContent>
         <S.PlayerVolumeImageWrapper>
-          <S.PlayerVolumeSVGWrapper onClick={() => onVolumeToggle()}>
+          <S.PlayerVolumeSVGWrapper isDarkTheme={isDarkTheme} onClick={() => onVolumeToggle()}>
             <SvgImage
-              href={onVolumeOn ? changeVolumeIcon() : changeVolumeOffIcon()}
+              href={onVolumeOn
+                ? '/skyprofy-ts/img/icon/sprite.svg#icon-volume'
+                : '/skyprofy-ts/img/icon/sprite.svg#icon-volume-off'}
               ariaLabel="volume"
             />
           </S.PlayerVolumeSVGWrapper>

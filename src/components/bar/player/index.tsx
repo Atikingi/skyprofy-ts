@@ -26,12 +26,15 @@ const Player = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [trackProgress, setTrackProgress] = useState<number>(0);
   const [isVolumeOn, setIsVolumeOn] = useState<boolean>(true);
+  const [volumeValue, setVolumeValue] = useState<number>(0.7);
+  const [prevVolumeValue, setPrevVolumeValue] = useState<number>(0);
 
   const audioRef = useRef(new Audio('/skyprofy-ts/music/never-gonna.mp3'));
   const progressBarInterval = useRef<number | null>(null);
 
   const { duration } = audioRef.current;
   const progressByPercent = (trackProgress / duration) * 100;
+  audioRef.current.volume = volumeValue;
 
   const onTogglePlay = () => {
     setIsPlaying(!isPlaying);
@@ -64,15 +67,20 @@ const Player = () => {
   };
 
   const onVolumeChange = (e: React.ChangeEvent) => {
-    audioRef.current.volume = Number((e.target as HTMLInputElement).value);
-    setIsVolumeOn(true);
+    if (!isVolumeOn) {
+      setIsVolumeOn(true);
+    }
+    setVolumeValue(Number((e.target as HTMLInputElement).value));
   };
 
   const onVolumeToggle = () => {
     setIsVolumeOn(!isVolumeOn);
-    isVolumeOn
-      ? (audioRef.current.volume = 0)
-      : (audioRef.current.volume = 0.5);
+    if (isVolumeOn) {
+      setPrevVolumeValue(volumeValue);
+      setVolumeValue(0);
+    } else {
+      setVolumeValue(prevVolumeValue);
+    }
   };
 
   useEffect(() => {
@@ -116,7 +124,7 @@ const Player = () => {
           />
         </S.BarPlayer>
         <PlayerVolume
-          value={audioRef.current.volume}
+          value={volumeValue}
           onVolumeChange={onVolumeChange}
           onVolumeToggle={() => onVolumeToggle()}
           onVolumeOn={isVolumeOn}

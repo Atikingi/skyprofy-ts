@@ -11,40 +11,36 @@ interface Props {
 const PlayerControls = ({ isPlaying, onTogglePlay }: Props) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
-  const changeIconColor = () => {
-    return isDarkTheme ? 'dark' : 'light';
-  };
-
   return (
     <S.PlayerControls>
       <S.PlayerButton>
-        <S.PrevIconWrapper>
-          <SvgImage href={`/skyprofy-ts/img/icon/sprite.svg#icon-prev-${changeIconColor()}`} ariaLabel="prev" />
+        <S.PrevIconWrapper isDarkTheme={isDarkTheme}>
+          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-prev' ariaLabel="prev" />
         </S.PrevIconWrapper>
       </S.PlayerButton>
       <S.PlayerButton onClick={() => onTogglePlay()}>
         {isPlaying
-          ? <S.PlayIconWrapper>
-            <SvgImage href={`/skyprofy-ts/img/icon/sprite.svg#icon-pause-${changeIconColor()}`} ariaLabel="pause"/>
+          ? <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
+            <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-pause' ariaLabel="pause"/>
           </S.PlayIconWrapper>
-          : <S.PlayIconWrapper>
-              <SvgImage href={`/skyprofy-ts/img/icon/sprite.svg#icon-play-${changeIconColor()}`} ariaLabel="play"/>
+          : <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
+              <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-play' ariaLabel="play"/>
             </S.PlayIconWrapper>
         }
       </S.PlayerButton>
       <S.PlayerButton>
-        <S.NextIconWrapper>
-          <SvgImage href={`/skyprofy-ts/img/icon/sprite.svg#icon-next-${changeIconColor()}`} ariaLabel="next" />
+        <S.NextIconWrapper isDarkTheme={isDarkTheme}>
+          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-next' ariaLabel="next" />
         </S.NextIconWrapper>
       </S.PlayerButton>
       <S.PlayerButton>
-        <S.RepeatIconWrapper>
-          <SvgImage href={`/skyprofy-ts/img/icon/sprite.svg#icon-repeat-${changeIconColor()}`} ariaLabel="repeat" />
+        <S.RepeatIconWrapper isDarkTheme={isDarkTheme}>
+          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-repeat' ariaLabel="repeat" />
         </S.RepeatIconWrapper>
       </S.PlayerButton>
       <S.PlayerButton>
-        <S.ShuffleIconWrapper>
-          <SvgImage href={`/skyprofy-ts/img/icon/sprite.svg#icon-shuffle-${changeIconColor()}`} ariaLabel="shuffle" />
+        <S.ShuffleIconWrapper isDarkTheme={isDarkTheme}>
+          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-shuffle' ariaLabel="shuffle" />
         </S.ShuffleIconWrapper>
       </S.PlayerButton>
     </S.PlayerControls>

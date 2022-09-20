@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'title-dark': '#FFFFFF',
-  'title-light': '#000000',
+
   'button-hover': '#D9B6FF',
   'button-border-hover': '#D9B6FF',
   'button-active': '#AD61FF',
@@ -14,7 +13,8 @@ const COLORS = {
 };
 
 export const Title = styled.p<{isDarkTheme: boolean}>`
-  color: ${props => props.isDarkTheme ? COLORS['title-dark'] : COLORS['title-light']};
+  --color: ${props => props.isDarkTheme ? '#FFFFFF' : '#000000'};
+  color: var(--color);
 `;
 
 export const FilterButton = styled.div<{isActive: boolean, isDarkTheme: boolean}>`
