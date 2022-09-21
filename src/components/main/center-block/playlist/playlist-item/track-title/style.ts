@@ -28,18 +28,19 @@ export const TrackTitleImage = styled.div<{isDarkTheme: boolean}>`
   width: 51px;
   height: 51px;
   padding: 16px;
-  background: var(--bg-color);
+  background-color: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 17px;
+  transition: background-color 0.5s ease;
 `;
 
-export const TrackSVGWrapper = styled.div`
+export const TrackIconWrapper = styled.div`
   width: 18px;
   height: 17px;
   fill: transparent;
-  stroke: ${COLORS['track-icon']};
+  color: ${COLORS['track-icon']};
 `;
 
 export const TrackTitleText = styled.div`

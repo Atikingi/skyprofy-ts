@@ -18,8 +18,6 @@ export const PrevIconWrapper = styled.div<{isDarkTheme: boolean}>`
   height: 14px;
   margin-right: 23px;
   cursor: pointer;
-  fill: currentColor;
-  stroke: currentColor;
   color: var(--color);
 `;
 
@@ -27,9 +25,7 @@ export const PlayIconWrapper = styled.div<{isDarkTheme: boolean}>`
   --color: ${props => props.isDarkTheme ? '#D9D9D9' : '#B1B1B1'};
   width: 22px;
   height: 20px;
-  margin-right: 23px;
-  fill: currentColor;
-  stroke: currentColor;
+  margin-right: 12px;
   cursor: pointer;
   color: var(--color);
 `;
@@ -39,8 +35,6 @@ export const NextIconWrapper = styled.div<{isDarkTheme: boolean}>`
   width: 15px;
   height: 14px;
   margin-right: 28px;
-  fill: currentColor;
-  stroke: currentColor;
   cursor: pointer;
   color: var(--color);
 `;
@@ -51,7 +45,6 @@ export const RepeatIconWrapper = styled.div<{isDarkTheme: boolean}>`
   width: 18px;
   height: 12px;
   fill: transparent;
-  stroke: currentColor;
   margin-right: 24px;
   cursor: pointer;
   color: var(--color);
@@ -67,7 +60,6 @@ export const ShuffleIconWrapper = styled.div<{isDarkTheme: boolean}>`
   width: 19px;
   height: 12px;
   fill: transparent;
-  stroke: currentColor;
   margin-right: 24px;
   cursor: pointer;
   color: var(--color);

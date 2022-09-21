@@ -1,7 +1,12 @@
 import React, { useContext } from 'react';
-import SvgImage from '../../svg';
 import * as S from './style';
 import { ThemeContext } from '../../context/themeContext';
+import PrevIcon from '../../icons/prevIcon';
+import PauseIcon from '../../icons/iconPause';
+import PlayIcon from '../../icons/playIcon';
+import NextIcon from '../../icons/nextIcon';
+import RepeatIcon from '../../icons/repeatIcon';
+import ShuffleIcon from '../../icons/shuffleIcon';
 
 interface Props {
   isPlaying: boolean,
@@ -15,32 +20,32 @@ const PlayerControls = ({ isPlaying, onTogglePlay }: Props) => {
     <S.PlayerControls>
       <S.PlayerButton>
         <S.PrevIconWrapper isDarkTheme={isDarkTheme}>
-          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-prev' ariaLabel="prev" />
+          <PrevIcon aria-label="prev"/>
         </S.PrevIconWrapper>
       </S.PlayerButton>
       <S.PlayerButton onClick={() => onTogglePlay()}>
         {isPlaying
           ? <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
-            <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-pause' ariaLabel="pause"/>
+            <PauseIcon aria-label="pause"/>
           </S.PlayIconWrapper>
           : <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
-              <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-play' ariaLabel="play"/>
+              <PlayIcon aria-label="play"/>
             </S.PlayIconWrapper>
         }
       </S.PlayerButton>
       <S.PlayerButton>
         <S.NextIconWrapper isDarkTheme={isDarkTheme}>
-          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-next' ariaLabel="next" />
+          <NextIcon aria-label="next"/>
         </S.NextIconWrapper>
       </S.PlayerButton>
       <S.PlayerButton>
         <S.RepeatIconWrapper isDarkTheme={isDarkTheme}>
-          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-repeat' ariaLabel="repeat" />
+          <RepeatIcon aria-label="repeat"/>
         </S.RepeatIconWrapper>
       </S.PlayerButton>
       <S.PlayerButton>
         <S.ShuffleIconWrapper isDarkTheme={isDarkTheme}>
-          <SvgImage href='/skyprofy-ts/img/icon/sprite.svg#icon-shuffle' ariaLabel="shuffle" />
+          <ShuffleIcon aria-label='shuffle'/>
         </S.ShuffleIconWrapper>
       </S.PlayerButton>
     </S.PlayerControls>

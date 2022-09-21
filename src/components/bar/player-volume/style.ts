@@ -28,7 +28,6 @@ export const PlayerVolumeSVGWrapper = styled.div<{isDarkTheme: boolean}>`
   --color: ${props => props.isDarkTheme ? '#D9D9D9' : '#B1B1B1'};
   width: 18px;
   height: 18px;
-  fill: currentColor;
   cursor: pointer;
   color: var(--color);
 `;

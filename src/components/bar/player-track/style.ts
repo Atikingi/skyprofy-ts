@@ -30,7 +30,7 @@ export const TrackPlayImageWrapper = styled.div<{isDarkTheme: boolean}>`
   justify-content: center;
   margin-right: 12px;
   grid-area: image;
-
+  transition: background-color 0.5s ease;
   overflow: hidden;
 `;
 
@@ -38,6 +38,7 @@ export const TrackPlayIconWrapper = styled.div`
   width: 18px;
   height: 17px;
   fill: transparent;
+  color: #4E4E4E;
 `;
 
 export const TrackPlayAuthor = styled.div`
@@ -97,8 +98,6 @@ export const TrackPlayLikeDisButtonIconWrapper = styled.div<{isDarkTheme: boolea
   
   width: 14px;
   height: 12px;
-  fill: transparent;
-  stroke: currentColor;
   color: var(--color);
   
   :active {

@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import SvgImage from '../../svg';
 import * as S from './style';
 import { SkeletonImage, Skeleton } from '../../UI/skeletons/style';
 import { ThemeContext } from '../../context/themeContext';
+import LikeIcon from '../../icons/likeIcon';
+import DislikeIcon from '../../icons/dislikeIcon';
+import NoteIcon from '../../icons/noteIcon';
 
 interface Props {
   trackLink: string;
@@ -31,7 +33,7 @@ const PlayerTrack = ({
   } else {
     trackIcon = (
       <S.TrackPlayIconWrapper>
-        <SvgImage href="/skyprofy-ts/img/icon/sprite.svg#icon-note" ariaLabel="music" />
+        <NoteIcon aria-label='music'/>
       </S.TrackPlayIconWrapper>
     );
     trackTitleAuthor = (
@@ -55,15 +57,12 @@ const PlayerTrack = ({
       <S.TrackPlayLikeDisWrapper>
         <S.TrackPlayLikeButton>
           <S.TrackPlayLikeDisButtonIconWrapper isDarkTheme={isDarkTheme}>
-            <SvgImage href="/skyprofy-ts/img/icon/sprite.svg#icon-like" ariaLabel="like" />
+            <LikeIcon aria-label="like"/>
           </S.TrackPlayLikeDisButtonIconWrapper>
         </S.TrackPlayLikeButton>
         <S.TrackPlayDisButton>
           <S.TrackPlayLikeDisButtonIconWrapper isDarkTheme={isDarkTheme}>
-            <SvgImage
-              href="/skyprofy-ts/img/icon/sprite.svg#icon-dislike"
-              ariaLabel="dislike"
-            />
+            <DislikeIcon aria-label="dislike"/>
           </S.TrackPlayLikeDisButtonIconWrapper>
         </S.TrackPlayDisButton>
       </S.TrackPlayLikeDisWrapper>

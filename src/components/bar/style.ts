@@ -7,4 +7,5 @@ export const Bar = styled.div<{isDarkTheme: boolean}>`
   left: 0;
   width: 100%;
   background: var(--bg-color);
+  transition: background-color 0.5s ease;
 `;

@@ -6,6 +6,7 @@ export const Wrapper = styled.div<{ isDarkTheme: boolean }>`
   min-height: 100%;
   overflow: hidden;
   background-color: var(--bg-color);
+  transition: background-color 0.5s ease;
 `;
 
 export const Container = styled.div<{ isDarkTheme: boolean }>`
@@ -16,4 +17,5 @@ export const Container = styled.div<{ isDarkTheme: boolean }>`
   position: relative;
   background-color: var(--bg-color);
   overflow: hidden;
+  transition: background-color 0.5s ease;
 `;

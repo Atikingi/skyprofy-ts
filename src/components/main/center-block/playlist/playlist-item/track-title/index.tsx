@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import * as S from './style';
-import SvgImage from '../../../../../svg';
 import { Skeleton, SkeletonImage } from '../../../../../UI/skeletons/style';
 import { ThemeContext } from '../../../../../context/themeContext';
+import NoteIcon from '../../../../../icons/noteIcon';
 
 interface Props {
   isLoading: boolean,
@@ -23,12 +23,9 @@ const TrackTitle = ({
         {isLoading
           ? <SkeletonImage />
           : <S.TrackTitleImage isDarkTheme={isDarkTheme}>
-            <S.TrackSVGWrapper>
-              <SvgImage
-                href='/skyprofy-ts/img/icon/sprite.svg#icon-note'
-                ariaLabel={'music'}
-              />
-            </S.TrackSVGWrapper>
+            <S.TrackIconWrapper>
+              <NoteIcon aria-label='music'/>
+            </S.TrackIconWrapper>
           </S.TrackTitleImage>
         }
       </S.TrackImageWrapper>

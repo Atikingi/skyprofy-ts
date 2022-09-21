@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import SvgImage from '../../svg';
 import * as S from './style';
 import { ThemeContext } from '../../context/themeContext';
+import VolumeIcon from '../../icons/volumeIcon';
+import VolumeOffIcon from '../../icons/volumeOffIcon';
 
 interface Props {
   value: number;
@@ -23,12 +24,10 @@ const PlayerVolume = ({
       <S.PlayerVolumeContent>
         <S.PlayerVolumeImageWrapper>
           <S.PlayerVolumeSVGWrapper isDarkTheme={isDarkTheme} onClick={() => onVolumeToggle()}>
-            <SvgImage
-              href={onVolumeOn
-                ? '/skyprofy-ts/img/icon/sprite.svg#icon-volume'
-                : '/skyprofy-ts/img/icon/sprite.svg#icon-volume-off'}
-              ariaLabel="volume"
-            />
+              {onVolumeOn
+                ? <VolumeIcon aria-label="volume"/>
+                : <VolumeOffIcon aria-label="volume-off"/>
+              }
           </S.PlayerVolumeSVGWrapper>
         </S.PlayerVolumeImageWrapper>
         <S.PlayerVolumeProgressWrapper>

@@ -21,7 +21,6 @@ export const SearchIconWrapper = styled.div<{isDarkTheme: boolean}>`
   height: 17px;
   margin-right: 5px;
   fill: transparent;
-  stroke: currentColor;
   color: var(--bg);
 `;
 

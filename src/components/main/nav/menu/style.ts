@@ -28,6 +28,8 @@ export const MenuItem = styled.li<{ isDarkTheme: boolean }>`
   }
 `;
 
-export const ThemeToggleButton = styled.img`
+export const ThemeToggleButtonWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#FFFFFF' : '#000000'};
   cursor: pointer;
-`;
+  color: var(--color);
+  `;
