@@ -1,18 +1,21 @@
 import styled from 'styled-components';
-import { COLORS } from '../../style/colors';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ isDarkTheme: boolean }>`
+  --bg-color: ${props => props.isDarkTheme ? '#383838' : '#FFFFFF'};
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-  background-color: ${COLORS['primary-background']};
+  background-color: var(--bg-color);
+  transition: background-color 0.5s ease;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{ isDarkTheme: boolean }>`
+  --bg-color: ${props => props.isDarkTheme ? '#181818' : '#FFFFFF'};
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  background-color: ${COLORS['secondary-background']};
+  background-color: var(--bg-color);
   overflow: hidden;
+  transition: background-color 0.5s ease;
 `;

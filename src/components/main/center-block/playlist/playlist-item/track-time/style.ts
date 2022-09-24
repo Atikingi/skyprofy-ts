@@ -13,14 +13,16 @@ export const TrackTime = styled.div`
 
 export const TrackTimeWrapper = styled.div`
   display: flex;
+  align-items: baseline;
 `;
 
-export const TrackTimeSVGWRapper = styled.div`
+export const TrackLikeIconWrapper = styled.div`
   width: 14px;
   height: 12px;
   margin-right: 17px;
   fill: transparent;
-  stroke: ${COLORS['track-icon']};
+  color: ${COLORS['track-icon']};
+  cursor: pointer;
 `;
 
 export const TrackTimeText = styled.span`

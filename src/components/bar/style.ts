@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-const COLORS = {
-  'bar-background': 'rgba(28, 28, 28, 0.5)'
-};
-
-export const Bar = styled.div`
+export const Bar = styled.div<{isDarkTheme: boolean}>`
+  --bg-color: ${props => props.isDarkTheme ? '#181818' : '#FFFFFF'};
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: ${COLORS['bar-background']};
+  background: var(--bg-color);
+  transition: background-color 0.5s ease;
 `;

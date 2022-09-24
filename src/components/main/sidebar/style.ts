@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const COLORS = {
   'sidebar-background': '#313131',
-  'sidebar-name': '#ffffff',
   'sidebar-avatar': '#313131'
 };
 
@@ -49,12 +48,13 @@ export const SidebarUser = styled.div`
   padding: 12px 0 15px 0;
 `;
 
-export const SidebarUserName = styled.p`
+export const SidebarUserName = styled.p<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#ffffff' : '#000000'};
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: ${COLORS['sidebar-name']};
+  color: var(--color);
   margin-right: 16px;
 `;
 

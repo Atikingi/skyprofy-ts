@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Menu from './menu';
 import BurgerLines from './burger';
 import * as S from './style';
+import { ThemeContext } from '../../context/themeContext';
 
 interface Props {
   src: string,
@@ -18,9 +19,10 @@ const Logo = ({ src, alt }: Props) => {
 
 const Navigation = () => {
   const [menuActive, setMenuActive] = useState<boolean>(false);
+  const { isDarkTheme } = useContext(ThemeContext);
 
   return (
-      <S.Navigation>
+      <S.Navigation isDarkTheme={isDarkTheme}>
         <Logo src="/skyprofy-ts/img/logo.png" alt="logo"/>
         <S.Burger onClick={() => setMenuActive((!menuActive))}>
           <BurgerLines menuActive={menuActive}/>

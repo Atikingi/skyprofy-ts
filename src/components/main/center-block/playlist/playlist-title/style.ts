@@ -40,7 +40,7 @@ export const PlaylistTitleCol04 = styled(PlaylistTitleCol)`
   text-align: end;
 `;
 
-export const PlaylistSVGWrapper = styled.div`
+export const PlaylistWatchIconWrapper = styled.div`
   width: 12px;
   height: 17px;
   fill: transparent;

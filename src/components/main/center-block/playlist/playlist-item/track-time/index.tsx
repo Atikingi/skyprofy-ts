@@ -1,7 +1,7 @@
 import React from 'react';
 import { Skeleton } from '../../../../../UI/skeletons/style';
-import SvgImage from '../../../../../svg';
 import * as S from './style';
+import LikeIcon from '../../../../../icons/likeIcon';
 
 interface Props {
   isLoading: boolean;
@@ -14,9 +14,9 @@ const TrackTime = ({ isLoading, trackTime }: Props) => {
       {isLoading
         ? <Skeleton />
         : <S.TrackTimeWrapper>
-          <S.TrackTimeSVGWRapper>
-            <SvgImage href="/skyprofy-ts/img/icon/sprite.svg#icon-like" ariaLabel="time" />
-          </S.TrackTimeSVGWRapper>
+          <S.TrackLikeIconWrapper>
+            <LikeIcon aria-label='like'/>
+          </S.TrackLikeIconWrapper>
           <S.TrackTimeText>{trackTime}</S.TrackTimeText>
         </S.TrackTimeWrapper>
       }

@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
-const COLORS = {
-  'burger-background': '#d3d3d3'
-};
-
-export const BurgerLine = styled.span<{ active: boolean }>`
+export const BurgerLine = styled.span<{ active: boolean, isDarkTheme: boolean }>`
+  --bg-color: ${props => props.isDarkTheme ? '#d3d3d3' : '#000000'};
   display: inline-block;
   width: 100%;
   height: 1px;
-  background-color: ${COLORS['burger-background']};
+  background-color: var(--bg-color);
   transform: ${props => props.active ? 'rotate(90deg)' : 'rotate(0)'} ;
 
   transition: transform 0.5s;

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as S from './style';
+import { ThemeContext } from '../../../context/themeContext';
 
 interface Props {
   text: string,
@@ -7,9 +8,11 @@ interface Props {
 }
 
 const FilterCategories = ({ text, isActive }: Props) => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
-    <S.FilterButton isActive={isActive}>
-      <div>{text}</div>
+    <S.FilterButton isActive={isActive} isDarkTheme={isDarkTheme}>
+      <S.Title isDarkTheme={isDarkTheme}>{text}</S.Title>
       <S.FilterButtonCount isActive={isActive}>5</S.FilterButtonCount>
     </S.FilterButton>
   );

@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
 const COLORS = {
-  'slider-thumb-border': '#FFFFFF',
-  'slider-background': '#1A1A1A',
-  'slider-runnable-track-border': '#797979',
-  'slider-runnable-track-background': '#FFFFFF'
+  'slider-runnable-track-border': '#797979'
 };
 
 export const PlayerVolumeBlock = styled.div`
@@ -27,11 +24,12 @@ export const PlayerVolumeImageWrapper = styled.div`
   margin-right: 17px;
 `;
 
-export const PlayerVolumeSVGWrapper = styled.div`
+export const PlayerVolumeSVGWrapper = styled.div<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#D9D9D9' : '#B1B1B1'};
   width: 18px;
   height: 18px;
-  fill: transparent;
   cursor: pointer;
+  color: var(--color);
 `;
 
 export const PlayerVolumeProgressWrapper = styled.div`
@@ -41,7 +39,7 @@ export const PlayerVolumeProgressWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const PlayerVolumeProgressLine = styled.input`
+export const PlayerVolumeProgressLine = styled.input<{isDarkTheme: boolean}>`
   -webkit-appearance: none;
   background: transparent;
   cursor: pointer;
@@ -57,8 +55,11 @@ export const PlayerVolumeProgressLine = styled.input`
 
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: ${COLORS['slider-background']};
-    border: 2px solid ${COLORS['slider-thumb-border']};
+    --bg-color: ${props => props.isDarkTheme ? '#1A1A1A' : '#FFFFFF'};
+    --border-color: ${props => props.isDarkTheme ? '#FFFFFF' : '#979696'};
+    
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
     width: 13px;
     height: 13px;
     border-radius: 50%;
@@ -67,11 +68,12 @@ export const PlayerVolumeProgressLine = styled.input`
   }
 
   ::-webkit-slider-runnable-track {
+    --bg-color: ${props => props.isDarkTheme ? '#FFFFFF' : '#AD61FF'};
+    
     width: 100%;
     height: 0;
-
     border: 2px solid ${COLORS['slider-runnable-track-border']};
-    background: ${COLORS['slider-runnable-track-background']};
+    background: var(--bg-color);
     border-radius: 2px;
   }
 `;

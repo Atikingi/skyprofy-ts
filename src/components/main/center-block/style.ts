@@ -11,11 +11,13 @@ export const CenterBlockContent = styled.div`
   flex-direction: column;
 `;
 
-export const CenterBlockTitle = styled.h2`
+export const CenterBlockTitle = styled.h2<{isDarkTheme: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#FFFFFF' : '#000000'};
+  margin-bottom: 45px;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
   letter-spacing: -0.8px;
-  margin-bottom: 45px;
+  color: var(--color);
 `;

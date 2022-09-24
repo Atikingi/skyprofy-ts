@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as S from './style';
+import { ThemeContext } from '../../../context/themeContext';
 
 interface FilterItemProps {
   text: string,
@@ -7,8 +8,10 @@ interface FilterItemProps {
 }
 
 const FilterItem = ({ text, href }: FilterItemProps) => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
-    <S.FilterItemLink href={href}>{text}</S.FilterItemLink>
+    <S.FilterItemLink isDarkTheme={isDarkTheme} href={href}>{text}</S.FilterItemLink>
   );
 };
 

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import FilterCategories from './filter-categories';
 import FilterItem from './filter-item';
 import { trackData } from '../../../mocks/track-data';
 import FilterItemYears from './filter-item-year';
 import * as S from './style';
+import { ThemeContext } from '../../context/themeContext';
 
 const Filter = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
   const [isActive, setActive] = useState<'author' | 'year' | 'genre' | null>(
     null
   );
@@ -30,16 +32,16 @@ const Filter = () => {
 
   return (
     <S.FilterWrapper>
-      <S.FilterTitle>Искать по:</S.FilterTitle>
+      <S.FilterTitle isDarkTheme={isDarkTheme}>Искать по:</S.FilterTitle>
       <S.FilterButtonWrapper
         onClick={() =>
           setActive((prevState) => (prevState === null ? 'author' : null))
         }
       >
         <FilterCategories text="исполнителю" isActive={isActive === 'author'} />
-        <S.FilterItemsWrapperAuthor isActive={isActive}
+        <S.FilterItemsWrapperAuthor isDarkTheme={isDarkTheme} isActive={isActive}
         >
-          <S.FilterItems>
+          <S.FilterItems isDarkTheme={isDarkTheme}>
             {trackData[0].tracks.map((item) => (
               <FilterItem
                 key={item.trackTitleText}
@@ -57,7 +59,7 @@ const Filter = () => {
         }
       >
         <FilterCategories text="году выпуска" isActive={isActive === 'year'} />
-        <S.FilterItemsWrapperYear isActive={isActive}>
+        <S.FilterItemsWrapperYear isDarkTheme={isDarkTheme} isActive={isActive}>
           <FilterItemYears />
         </S.FilterItemsWrapperYear>
       </S.FilterButtonWrapper>
@@ -67,8 +69,8 @@ const Filter = () => {
         }
       >
         <FilterCategories text="жанру" isActive={isActive === 'genre'} />
-        <S.FilterItemsWrapperGenre isActive={isActive}>
-          <S.FilterItems>
+        <S.FilterItemsWrapperGenre isDarkTheme={isDarkTheme} isActive={isActive}>
+          <S.FilterItems isDarkTheme={isDarkTheme}>
             {genre.map((item) => (
               <FilterItem key={item} text={item} href="#" />
             ))}
