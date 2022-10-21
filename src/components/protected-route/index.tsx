@@ -1,13 +1,16 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import getCookie from '../../utils/get-cookie';
+import { setLogin } from '../../store/slices/authSlice';
 
 interface Props {
   redirectPath?: string,
-  isAllowed: boolean
+  isLogin: boolean
 }
 
-export const ProtectedRoute = ({ redirectPath = 'skyprofy-ts/Login', isAllowed }: Props) => {
-  if (!isAllowed) {
+export const ProtectedRoute = ({ redirectPath = 'skyprofy-ts/Login', isLogin }: Props) => {
+  if (!isLogin) {
     return <Navigate to={redirectPath} replace={true}/>;
   }
 

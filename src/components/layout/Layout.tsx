@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import Navigation from '../main/nav';
 import Sidebar from '../main/sidebar';
-import Bar from '../bar';
 import * as S from './style';
 import GlobalStyles from '../../style/global';
 import { ThemeContext } from '../context/themeContext';
+import { useSelector } from 'react-redux';
+import Bar from '../bar';
 
 interface Props {
   children: React.ReactNode;
@@ -20,8 +21,8 @@ const Layout = ({ children }: Props) => {
           <Navigation />
           {children}
           <Sidebar />
-          <Bar />
         </main>
+        <Bar/>
       </S.Container>
       <GlobalStyles />
     </S.Wrapper>

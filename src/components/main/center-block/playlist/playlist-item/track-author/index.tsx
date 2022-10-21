@@ -1,28 +1,27 @@
 import React, { useContext } from 'react';
-import { Skeleton } from '../../../../../UI/skeletons/style';
 import * as S from './style';
 import { ThemeContext } from '../../../../../context/themeContext';
 
 interface Props {
-  isLoading: boolean;
+  id: string;
   trackAuthorLink: string;
   trackAuthorText: string;
+  onClick: (arg0: MouseEvent) => void;
 }
 
-const TrackAuthor = ({
-  isLoading,
-  trackAuthorLink,
-  trackAuthorText
-}: Props) => {
+const TrackAuthor = ({ trackAuthorLink, trackAuthorText, id, onClick }: Props) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (
-    <S.TrackAuthor>
-      {isLoading
-        ? <Skeleton/>
-        : <S.TrackAuthorLink isDarkTheme={isDarkTheme} href={trackAuthorLink}>
-          {trackAuthorText}
-        </S.TrackAuthorLink>}
+    <S.TrackAuthor id={id} onClick={() => onClick}>
+      <S.TrackAuthorLink
+        id={id}
+        onClick={(e) => onClick}
+        isDarkTheme={isDarkTheme}
+        href={trackAuthorLink}
+      >
+        {trackAuthorText}
+      </S.TrackAuthorLink>
     </S.TrackAuthor>
   );
 };

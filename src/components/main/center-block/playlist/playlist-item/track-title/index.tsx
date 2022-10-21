@@ -1,42 +1,37 @@
 import React, { useContext } from 'react';
 import * as S from './style';
-import { Skeleton, SkeletonImage } from '../../../../../UI/skeletons/style';
 import { ThemeContext } from '../../../../../context/themeContext';
 import NoteIcon from '../../../../../icons/noteIcon';
 
 interface Props {
-  isLoading: boolean,
-  trackTitleLink: string,
-  trackTitleText: string
+  id: string;
+  trackTitleLink: string;
+  trackTitleText: string;
+  onClick: (arg0: MouseEvent) => void;
 }
 
-const TrackTitle = ({
-  isLoading,
-  trackTitleLink,
-  trackTitleText
-}: Props) => {
+const TrackTitle = ({ trackTitleLink, trackTitleText, id, onClick }: Props) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (
-    <S.TrackTitle>
+    <S.TrackTitle onClick={() => onClick}>
       <S.TrackImageWrapper>
-        {isLoading
-          ? <SkeletonImage />
-          : <S.TrackTitleImage isDarkTheme={isDarkTheme}>
-            <S.TrackIconWrapper>
-              <NoteIcon aria-label='music'/>
-            </S.TrackIconWrapper>
-          </S.TrackTitleImage>
-        }
+        <S.TrackTitleImage isDarkTheme={isDarkTheme}>
+          <S.TrackIconWrapper>
+            <NoteIcon aria-label="music" />
+          </S.TrackIconWrapper>
+        </S.TrackTitleImage>
       </S.TrackImageWrapper>
-      <S.TrackTitleText>
-        {isLoading
-          ? <Skeleton />
-          : <S.TrackTitleLink isDarkTheme={isDarkTheme} href={trackTitleLink}>
-            {trackTitleText}
-            <S.TrackTitleSpan></S.TrackTitleSpan>
-          </S.TrackTitleLink>
-        }
+      <S.TrackTitleText id={id}>
+        <S.TrackTitleLink
+          id={id}
+          onClick={(e) => onClick}
+          isDarkTheme={isDarkTheme}
+          href={trackTitleLink}
+        >
+          {trackTitleText}
+          <S.TrackTitleSpan></S.TrackTitleSpan>
+        </S.TrackTitleLink>
       </S.TrackTitleText>
     </S.TrackTitle>
   );

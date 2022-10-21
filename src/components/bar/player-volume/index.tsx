@@ -1,30 +1,47 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import * as S from './style';
 import { ThemeContext } from '../../context/themeContext';
 import VolumeIcon from '../../icons/volumeIcon';
 import VolumeOffIcon from '../../icons/volumeOffIcon';
 
 interface Props {
-  value: number;
-  onVolumeChange: (e: React.ChangeEvent) => void;
-  onVolumeToggle: () => void;
-  onVolumeOn: boolean;
+  track: HTMLAudioElement;
 }
 
 const PlayerVolume = ({
-  value,
-  onVolumeChange,
-  onVolumeToggle,
-  onVolumeOn = true
+  track
 }: Props) => {
   const { isDarkTheme } = useContext(ThemeContext);
+
+  const [isVolumeOn, setIsVolumeOn] = useState<boolean>(true);
+  const [volumeValue, setVolumeValue] = useState<number>(0.2);
+  const [prevVolumeValue, setPrevVolumeValue] = useState<number>(0);
+
+  track.volume = volumeValue;
+
+  const onVolumeChange = (e: React.ChangeEvent) => {
+    if (!isVolumeOn) {
+      setIsVolumeOn(true);
+    }
+    setVolumeValue(Number((e.target as HTMLInputElement).value));
+  };
+
+  const onVolumeToggle = () => {
+    setIsVolumeOn(!isVolumeOn);
+    if (isVolumeOn) {
+      setPrevVolumeValue(volumeValue);
+      setVolumeValue(0);
+    } else {
+      setVolumeValue(prevVolumeValue);
+    }
+  };
 
   return (
     <S.PlayerVolumeBlock>
       <S.PlayerVolumeContent>
         <S.PlayerVolumeImageWrapper>
           <S.PlayerVolumeSVGWrapper isDarkTheme={isDarkTheme} onClick={() => onVolumeToggle()}>
-              {onVolumeOn
+              {isVolumeOn
                 ? <VolumeIcon aria-label="volume"/>
                 : <VolumeOffIcon aria-label="volume-off"/>
               }
@@ -38,7 +55,7 @@ const PlayerVolume = ({
             min="0"
             max="1"
             step="0.01"
-            value={value}
+            value={volumeValue}
             onChange={(e) => onVolumeChange(e)}
           />
         </S.PlayerVolumeProgressWrapper>

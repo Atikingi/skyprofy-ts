@@ -1,133 +1,54 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PlayerControls from '../player-controls';
 import PlayerTrack from '../player-track';
 import * as S from './style';
 import PlayerVolume from '../player-volume';
-import { ThemeContext } from '../../context/themeContext';
+import { useDispatch, useSelector } from 'react-redux';
+import PlayerBarProgress from '../player-bar-progress';
+import { useGetTrackByIdQuery } from '../../../services/music';
+import { getCurrentTrack } from '../../../store/slices/playerSlice';
 
 const Player = () => {
-  const [isLoading, setStatus] = useState<boolean>(true);
+  const dispatch = useDispatch();
+
+  const currentTrackLink = useSelector((state: any) => state.player.currentTrackLink);
+  const isPlaying = useSelector((state: any) => state.player.isPlaying);
+  const trackId = useSelector((state: any) => state.player.id);
+
+  const { data } = useGetTrackByIdQuery(trackId);
+  const [track, setTrack] = useState(new Audio(currentTrackLink));
+
+  if (isPlaying) {
+    track.autoplay = true;
+  }
 
   useEffect(() => {
-    const loadTimer = setTimeout(() => {
-      setStatus(false);
-    }, 0);
-    return () => {
-      clearTimeout(loadTimer);
-    };
-  });
-
-  // Theme
-
-  const { isDarkTheme } = useContext(ThemeContext);
-
-  // Player control
-
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [trackProgress, setTrackProgress] = useState<number>(0);
-  const [isVolumeOn, setIsVolumeOn] = useState<boolean>(true);
-  const [volumeValue, setVolumeValue] = useState<number>(0.7);
-  const [prevVolumeValue, setPrevVolumeValue] = useState<number>(0);
-
-  const audioRef = useRef(new Audio('/skyprofy-ts/music/never-gonna.mp3'));
-  const progressBarInterval = useRef<number | null>(null);
-
-  const { duration } = audioRef.current;
-  const progressByPercent = (trackProgress / duration) * 100;
-  audioRef.current.volume = volumeValue;
-
-  const onTogglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
-
-  const startProgressTimer = (): void => {
-    clearProgressBarInterval();
-
-    progressBarInterval.current = window.setInterval(() => {
-      setTrackProgress(audioRef.current.currentTime);
-
-      if (audioRef.current.ended) {
-        setIsPlaying(false);
-      }
-    }, 1000);
-  };
-
-  const clearProgressBarInterval = () => {
-    if (typeof progressBarInterval.current === 'number') {
-      clearInterval(progressBarInterval.current);
-    }
-  };
-
-  const onThumbChange = (value: string) => {
-    clearProgressBarInterval();
-
-    audioRef.current.currentTime = Number(value);
-    setTrackProgress(Number(value));
-    startProgressTimer();
-  };
-
-  const onVolumeChange = (e: React.ChangeEvent) => {
-    if (!isVolumeOn) {
-      setIsVolumeOn(true);
-    }
-    setVolumeValue(Number((e.target as HTMLInputElement).value));
-  };
-
-  const onVolumeToggle = () => {
-    setIsVolumeOn(!isVolumeOn);
-    if (isVolumeOn) {
-      setPrevVolumeValue(volumeValue);
-      setVolumeValue(0);
-    } else {
-      setVolumeValue(prevVolumeValue);
-    }
-  };
+    dispatch(getCurrentTrack(data?.track_file));
+  }, [data]);
 
   useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play()
-        .catch((e) => {
-          console.log(e);
-        });
+    track.pause();
+    track.remove();
+    console.log(track);
 
-      startProgressTimer();
-    } else {
-      audioRef.current.pause();
-      clearProgressBarInterval();
-    }
-  }, [isPlaying]);
+    setTrack(new Audio(currentTrackLink));
+    console.log('re-render new audio');
+  }, [currentTrackLink]);
+
+  console.log('re-render player component');
 
   return (
     <S.BarContent>
-      <S.BarPlayerProgress
-        isDarkTheme={isDarkTheme}
-        type="range"
-        step="1"
-        min="0"
-        max={isNaN(duration) ? '100' : `${duration}`}
-        value={trackProgress}
-        gradientValue={isNaN(progressByPercent) ? '0' : `${progressByPercent}`}
-        onChange={(e) => onThumbChange((e.target as HTMLInputElement).value)}
-      />
+      <PlayerBarProgress track={track}/>
       <S.BarPlayerBlock>
         <S.BarPlayer>
           <PlayerControls
-            isPlaying={isPlaying}
-            onTogglePlay={() => onTogglePlay()}
+            track={track}
           />
-          <PlayerTrack
-            isLoading={isLoading}
-            trackLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            trackName="Never gonna give you up"
-            authorLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            authorName="Rick Astley"
-          />
+          <PlayerTrack/>
         </S.BarPlayer>
         <PlayerVolume
-          value={volumeValue}
-          onVolumeChange={onVolumeChange}
-          onVolumeToggle={() => onVolumeToggle()}
-          onVolumeOn={isVolumeOn}
+          track={track}
         />
       </S.BarPlayerBlock>
     </S.BarContent>

@@ -52,7 +52,7 @@ export const LoginInput = styled.input`
   }
 `;
 
-export const LoginButton = styled.button`
+export const RegistrationButton = styled.button`
   width: 278px;
   height: 52px;
   font-family: 'StratosSkyeng',serif;
@@ -61,19 +61,13 @@ export const LoginButton = styled.button`
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.05px;
-  color: ${COLORS['input-button-login-text']};
-  background-color: ${COLORS['input-button-login-background']};
+  color: ${COLORS['input-button-registration-text']};
+  background-color: ${COLORS['input-button-registration-background']};
+  border: 1px ${COLORS['button-border']} solid;
   border-radius: 6px;
-  border: 0;
   cursor: pointer;
   
   :not(:last-child) {
     margin-bottom: 20px;
   }
-`;
-
-export const RegistrationButton = styled(LoginButton)`
-  color: ${COLORS['input-button-registration-text']};
-  background-color: ${COLORS['input-button-registration-background']};
-  border: 1px ${COLORS['button-border']} solid;
 `;

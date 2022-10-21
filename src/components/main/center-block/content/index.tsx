@@ -8,11 +8,11 @@ interface Props {
   playlist: PlaylistProps[]
 }
 
-const Content = ({ playlist }: Props) => {
+const Content = () => {
   return (
         <S.CenterBlockContent>
             <PlaylistTitle />
-            <PlaylistContent playlist={playlist}/>
+            <PlaylistContent />
         </S.CenterBlockContent>
   );
 };

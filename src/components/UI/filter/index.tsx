@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import FilterCategories from './filter-categories';
 import FilterItem from './filter-item';
-import { trackData } from '../../../mocks/track-data';
+// import { trackData } from '../../../mocks/track-data';
 import FilterItemYears from './filter-item-year';
 import * as S from './style';
 import { ThemeContext } from '../../context/themeContext';
@@ -41,15 +41,15 @@ const Filter = () => {
         <FilterCategories text="исполнителю" isActive={isActive === 'author'} />
         <S.FilterItemsWrapperAuthor isDarkTheme={isDarkTheme} isActive={isActive}
         >
-          <S.FilterItems isDarkTheme={isDarkTheme}>
-            {trackData[0].tracks.map((item) => (
-              <FilterItem
-                key={item.trackTitleText}
-                text={item.trackAuthorText}
-                href="#"
-              />
-            ))}
-          </S.FilterItems>
+          {/* <S.FilterItems isDarkTheme={isDarkTheme}> */}
+          {/*   {trackData[0].tracks.map((item) => ( */}
+          {/*     <FilterItem */}
+          {/*       key={item.trackTitleText} */}
+          {/*       text={item.trackAuthorText} */}
+          {/*       href="#" */}
+          {/*     /> */}
+          {/*   ))} */}
+          {/* </S.FilterItems> */}
         </S.FilterItemsWrapperAuthor>
       </S.FilterButtonWrapper>
 

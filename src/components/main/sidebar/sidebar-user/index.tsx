@@ -3,7 +3,7 @@ import * as S from '../style';
 import { ThemeContext } from '../../../context/themeContext';
 
 interface Props {
-  name: string,
+  name: string | undefined,
 }
 
 const SidebarUser = ({ name }: Props) => {

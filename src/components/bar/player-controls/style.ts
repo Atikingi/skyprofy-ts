@@ -39,30 +39,32 @@ export const NextIconWrapper = styled.div<{isDarkTheme: boolean}>`
   color: var(--color);
 `;
 
-export const RepeatIconWrapper = styled.div<{isDarkTheme: boolean}>`
+export const RepeatIconWrapper = styled.div<{isDarkTheme: boolean, isRepeat: boolean}>`
   --color: ${props => props.isDarkTheme ? '#696969' : '#B1B1B1'};
   --color-hover: ${props => props.isDarkTheme ? '#ACACAC' : '#707070'};
+  --color-active: ${props => props.isDarkTheme ? '#FFFFFF' : '#000000'};
   width: 18px;
   height: 12px;
   fill: transparent;
   margin-right: 24px;
   cursor: pointer;
-  color: var(--color);
+  color: ${props => props.isRepeat ? 'var(--color-active)}' : 'var(--color)'};
   
   :hover {
     color: var(--color-hover);
   }
 `;
 
-export const ShuffleIconWrapper = styled.div<{isDarkTheme: boolean}>`
+export const ShuffleIconWrapper = styled.div<{isDarkTheme: boolean, isShuffle: boolean}>`
   --color: ${props => props.isDarkTheme ? '#696969' : '#B1B1B1'};
   --color-hover: ${props => props.isDarkTheme ? '#ACACAC' : '#707070'};
+  --color-active: ${props => props.isDarkTheme ? '#FFFFFF' : '#000000'};
   width: 19px;
   height: 12px;
   fill: transparent;
   margin-right: 24px;
   cursor: pointer;
-  color: var(--color);
+  color: ${props => props.isShuffle ? 'var(--color-active)}' : 'var(--color)'};
   
   :hover {
     color: var(--color-hover);

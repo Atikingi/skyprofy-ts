@@ -4,6 +4,7 @@ export interface Svg {
 }
 
 export interface PlaylistItemProps {
+  id: string,
   trackTitleLink: string,
   trackTitleText: string,
   trackAuthorLink: string,
@@ -11,7 +12,7 @@ export interface PlaylistItemProps {
   trackAlbumLink: string,
   trackAlbumText: string,
   trackTime: string,
-  isLoading: boolean
+  isFavorite: boolean
 }
 
 export interface PlaylistProps {

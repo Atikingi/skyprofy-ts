@@ -1,40 +1,101 @@
 import React, { useEffect, useState } from 'react';
-import PlaylistItem from './playlist-item';
 import * as S from './style';
-import { PlaylistProps, PlaylistItemProps } from '../../../../types';
+import { PlaylistProps } from '../../../../types';
+import { useGetAllTracksQuery } from '../../../../services/music';
+import TrackSkeleton from '../../../UI/skeletons/track-skeleton';
+import PlaylistItem from './playlist-item';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearTracksId, getTracksId, pageUp } from '../../../../store/slices/playerSlice';
+import { checkFavoriteTrack } from '../../../../utils/check-favorite-track';
 
 interface Props {
-  playlist: PlaylistProps[]
+  playlist: PlaylistProps[];
 }
 
-const PlaylistContent = ({ playlist }: Props) => {
-  const [currentPlaylist]: PlaylistProps[] = playlist;
+const PlaylistContent = () => {
+  const countOfSkeletons: number[] = [];
+  for (let i = 0; i < 12; i++) {
+    countOfSkeletons.push(i);
+  }
 
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const formatDuration = (durationInSeconds: number) => {
+    const minutes = (durationInSeconds / 60).toFixed(0);
+    const seconds = +(durationInSeconds / 60).toFixed(2).slice(-2) * 60;
+
+    return `${minutes}:${seconds}`;
+  };
+
+  let tracks: any;
+
+  const dispatch = useDispatch();
+
+  const [page, setPage] = useState(1);
+  // const page = useSelector((state: any) => state.player.page);
+  const [content, setContent] = useState([]);
+
+  const { data, isError, error, isLoading, isSuccess } = useGetAllTracksQuery(page);
+  const trackTitle = useSelector((state: any) => state.search.searchValue);
 
   useEffect(() => {
-    const loadTimer = setTimeout(() => {
-      setIsLoading(false);
-    }, 5000);
-    return () => {
-      clearTimeout(loadTimer);
-    };
-  });
-  return (
-    <S.PlaylistContent>
-      {currentPlaylist.tracks.map(({ trackTitleText, trackTitleLink, trackAuthorLink, trackAuthorText, trackAlbumLink, trackAlbumText, trackTime }: PlaylistItemProps) =>
+    dispatch(clearTracksId());
+    tracks?.map((track: any) => dispatch(getTracksId(track.props.id)));
+  }, [data]);
+
+  if (isError) {
+    return (
+      <S.PlaylistContent>
+        <p>{error}</p>
+      </S.PlaylistContent>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <S.PlaylistContent>
+        {countOfSkeletons.map((arr, i) => <TrackSkeleton key={i} />)}
+      </S.PlaylistContent>
+    );
+  }
+
+  if (isSuccess) {
+    if (data.next === null) {
+      tracks = content.concat(data.results).filter(({ name }) => (name as string).toLowerCase().includes(trackTitle)).map(({
+        id,
+        name,
+        author,
+        album,
+        track_file,
+        duration_in_seconds,
+        stared_user
+      }: any) => (
         <PlaylistItem
-          key={trackTitleText}
-          trackTitleLink={trackTitleLink}
-          trackTitleText={trackTitleText}
-          trackAuthorLink={trackAuthorLink}
-          trackAuthorText={trackAuthorText}
-          trackAlbumLink={trackAlbumLink}
-          trackAlbumText={trackAlbumText}
-          trackTime={trackTime}
-          isLoading={isLoading}
-        />)}
-    </S.PlaylistContent>
+          key={id}
+          id={id}
+          trackTitleLink={track_file}
+          trackTitleText={name}
+          trackAuthorLink={track_file}
+          trackAuthorText={author}
+          trackAlbumLink={track_file}
+          trackAlbumText={album}
+          trackTime={formatDuration(duration_in_seconds)}
+          isFavorite={checkFavoriteTrack(stared_user)}
+        />
+      ));
+      return (
+        <S.PlaylistContent>
+          {tracks}
+        </S.PlaylistContent>
+      );
+    }
+
+    // dispatch(pageUp());
+    setPage(page + 1);
+    setContent(content.concat(data.results));
+  }
+  return (
+      <S.PlaylistContent>
+        <></>
+      </S.PlaylistContent>
   );
 };
 

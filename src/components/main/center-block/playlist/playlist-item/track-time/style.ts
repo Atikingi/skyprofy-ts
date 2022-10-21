@@ -16,11 +16,13 @@ export const TrackTimeWrapper = styled.div`
   align-items: baseline;
 `;
 
-export const TrackLikeIconWrapper = styled.div`
+export const TrackLikeIconWrapper = styled.div<{isFavorite: boolean, isDarkTheme: boolean}>`
+  --fill-color: ${props => props.isDarkTheme ? '#FFFFFF' : '#AD61FF'};
+  --color: ${props => props.isFavorite ? 'var(--fill-color)' : 'transparent'};
   width: 14px;
   height: 12px;
   margin-right: 17px;
-  fill: transparent;
+  fill: var(--color);
   color: ${COLORS['track-icon']};
   cursor: pointer;
 `;
