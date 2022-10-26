@@ -3,13 +3,13 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import getCookie from '../../utils/get-cookie';
 
 export interface Props {
-  token: string,
+  token: string | undefined,
   isLogin: boolean
 }
 
 const initialState: Props = {
   token: '',
-  isLogin: false
+  isLogin: Boolean(getCookie('username'))
 };
 
 export const authSlice = createSlice({

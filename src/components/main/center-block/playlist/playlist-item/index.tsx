@@ -1,12 +1,12 @@
 import React from 'react';
-import { PlaylistItemProps } from '../../../../../types';
-import * as S from './style';
 import TrackTitle from './track-title';
 import TrackAuthor from './track-author';
 import TrackAlbum from './track-album';
 import TrackTime from './track-time';
 import { useDispatch } from 'react-redux';
 import { getTrackId, play } from '../../../../../store/slices/playerSlice';
+import { PlaylistItemProps } from '../../../../../types';
+import * as S from './style';
 
 const PlaylistItem = ({
   id,
@@ -20,11 +20,11 @@ const PlaylistItem = ({
   isFavorite
 }: PlaylistItemProps) => {
   const dispatch = useDispatch();
-  console.log('re-render item');
 
-  const playTrackHandler = (e: MouseEvent | React.MouseEvent<HTMLDivElement>) => {
+  const playTrackHandler = (
+    e: MouseEvent | React.MouseEvent<HTMLDivElement>
+  ) => {
     e.preventDefault();
-    console.dir((e.target as HTMLDivElement));
 
     dispatch(getTrackId(+(e.target as HTMLDivElement).id));
     dispatch(play(true));

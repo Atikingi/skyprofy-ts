@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import * as S from './style';
 import { ThemeContext } from '../../../../../context/themeContext';
+import * as S from './style';
 
 interface Props {
   id: string;
@@ -9,14 +9,19 @@ interface Props {
   onClick: (arg0: MouseEvent) => void;
 }
 
-const TrackAuthor = ({ trackAuthorLink, trackAuthorText, id, onClick }: Props) => {
+const TrackAuthor = ({
+  trackAuthorLink,
+  trackAuthorText,
+  id,
+  onClick
+}: Props) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (
     <S.TrackAuthor id={id} onClick={() => onClick}>
       <S.TrackAuthorLink
         id={id}
-        onClick={(e) => onClick}
+        onClick={() => onClick}
         isDarkTheme={isDarkTheme}
         href={trackAuthorLink}
       >

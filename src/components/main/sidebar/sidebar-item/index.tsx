@@ -1,13 +1,13 @@
 import React from 'react';
+import { getPlaylistId } from '../../../../store/slices/playlistsSlice';
+import { useDispatch } from 'react-redux';
 import * as S from '../style';
 import * as Skeleton from '../../../UI/skeletons/style';
-import { useDispatch } from 'react-redux';
-import { getPlaylistId } from '../../../../store/slices/playlistsSlice';
 
 interface Props {
   src: string;
   isLoading: boolean;
-  id: string
+  id: string;
 }
 
 const SidebarListItem = ({ src, isLoading, id }: Props) => {
@@ -20,15 +20,15 @@ const SidebarListItem = ({ src, isLoading, id }: Props) => {
   };
 
   if (isLoading) {
-    sidebarItem = <Skeleton.Skeleton/>;
+    sidebarItem = <Skeleton.Skeleton />;
   } else {
-    sidebarItem = <S.SidebarImage src={src} id={id} onClick={(e) => onPlaylistId(e)}/>;
+    sidebarItem = (
+      <S.SidebarImage src={src} id={id} onClick={(e) => onPlaylistId(e)} />
+    );
   }
   return (
     <div>
-       <S.SidebarItem>
-          {sidebarItem}
-      </S.SidebarItem>
+      <S.SidebarItem>{sidebarItem}</S.SidebarItem>
     </div>
   );
 };

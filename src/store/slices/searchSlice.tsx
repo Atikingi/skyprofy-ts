@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+interface Props {
+  searchValue: string
+}
+
+const initialState: Props = {
   searchValue: ''
 };
 

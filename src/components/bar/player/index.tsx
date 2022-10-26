@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useGetTrackByIdQuery } from '../../../services/music';
+import { ThemeContext } from '../../context/themeContext';
+import { useAppSelector } from '../../../store/hooks';
+import * as S from './style';
 import PlayerControls from '../player-controls';
 import PlayerTrack from '../player-track';
-import * as S from './style';
 import PlayerVolume from '../player-volume';
-import { useDispatch, useSelector } from 'react-redux';
 import PlayerBarProgress from '../player-bar-progress';
-import { useGetTrackByIdQuery } from '../../../services/music';
 import { getCurrentTrack } from '../../../store/slices/playerSlice';
 
 const Player = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   const dispatch = useDispatch();
 
-  const currentTrackLink = useSelector((state: any) => state.player.currentTrackLink);
-  const isPlaying = useSelector((state: any) => state.player.isPlaying);
-  const trackId = useSelector((state: any) => state.player.id);
+  const currentTrackLink = useAppSelector(
+    (state) => state.player.currentTrackLink
+  );
+  const isPlaying = useAppSelector((state) => state.player.isPlaying);
+  const trackId = useAppSelector((state) => state.player.id);
+  const isShow = useAppSelector((state) => state.player.showPlayer);
 
   const { data } = useGetTrackByIdQuery(trackId);
+
   const [track, setTrack] = useState(new Audio(currentTrackLink));
 
   if (isPlaying) {
@@ -29,27 +37,19 @@ const Player = () => {
   useEffect(() => {
     track.pause();
     track.remove();
-    console.log(track);
 
     setTrack(new Audio(currentTrackLink));
-    console.log('re-render new audio');
   }, [currentTrackLink]);
 
-  console.log('re-render player component');
-
   return (
-    <S.BarContent>
-      <PlayerBarProgress track={track}/>
+    <S.BarContent isDarkTheme={isDarkTheme} isPlaying={isShow}>
+      <PlayerBarProgress track={track} />
       <S.BarPlayerBlock>
         <S.BarPlayer>
-          <PlayerControls
-            track={track}
-          />
-          <PlayerTrack/>
+          <PlayerControls track={track} />
+          <PlayerTrack />
         </S.BarPlayer>
-        <PlayerVolume
-          track={track}
-        />
+        <PlayerVolume track={track} />
       </S.BarPlayerBlock>
     </S.BarContent>
   );

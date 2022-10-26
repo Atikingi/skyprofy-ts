@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import * as S from './style';
-import { ThemeContext } from '../../../../../context/themeContext';
 import NoteIcon from '../../../../../icons/noteIcon';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../../../../context/themeContext';
+import * as S from './style';
 
 interface Props {
   id: string;
@@ -25,7 +25,7 @@ const TrackTitle = ({ trackTitleLink, trackTitleText, id, onClick }: Props) => {
       <S.TrackTitleText id={id}>
         <S.TrackTitleLink
           id={id}
-          onClick={(e) => onClick}
+          onClick={() => onClick}
           isDarkTheme={isDarkTheme}
           href={trackTitleLink}
         >

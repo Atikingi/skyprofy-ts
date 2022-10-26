@@ -4,7 +4,7 @@ import searchReducer from './slices/searchSlice';
 import playerReducer from './slices/playerSlice';
 import playlistsReducer from './slices/playlistsSlice';
 import authReducer from './slices/authSlice';
-import favoriteReducer from './slices/favoriteSlice';
+import filterReducer from './slices/filterSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ export const store = configureStore({
     player: playerReducer,
     playlists: playlistsReducer,
     auth: authReducer,
-    favorite: favoriteReducer
+    filter: filterReducer
   },
 
   middleware: (getDefaultMiddleware) =>

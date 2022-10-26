@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
-import * as S from './style';
 import { SkeletonImage, Skeleton } from '../../UI/skeletons/style';
-import { ThemeContext } from '../../context/themeContext';
 import NoteIcon from '../../icons/noteIcon';
-import { useGetTrackByIdQuery } from '../../../services/music';
-import { useSelector } from 'react-redux';
 import PlayerFavoriteButtons from '../player-favorite-buttons';
+import { useGetTrackByIdQuery } from '../../../services/music';
+import { useAppSelector } from '../../../store/hooks';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../context/themeContext';
+import * as S from './style';
 
 const PlayerTrack = () => {
   const { isDarkTheme } = useContext(ThemeContext);
 
-  const trackId = useSelector((state: any) => state.player.id);
+  const trackId = useAppSelector(state => state.player.id);
   const { data, isLoading, isSuccess } = useGetTrackByIdQuery(trackId);
 
   let trackIcon;
@@ -18,15 +18,15 @@ const PlayerTrack = () => {
   let trackTitleTrack;
 
   if (isLoading) {
-    trackIcon = <SkeletonImage/>;
-    trackTitleAuthor = <Skeleton/>;
-    trackTitleTrack = <Skeleton/>;
+    trackIcon = <SkeletonImage />;
+    trackTitleAuthor = <Skeleton />;
+    trackTitleTrack = <Skeleton />;
   }
 
   if (isSuccess) {
     trackIcon = (
       <S.TrackPlayIconWrapper>
-        <NoteIcon aria-label='music'/>
+        <NoteIcon aria-label="music" />
       </S.TrackPlayIconWrapper>
     );
     trackTitleTrack = (
@@ -43,11 +43,13 @@ const PlayerTrack = () => {
   return (
     <S.TrackPlay>
       <S.TrackPlayContain>
-        <S.TrackPlayImageWrapper isDarkTheme={isDarkTheme}>{trackIcon}</S.TrackPlayImageWrapper>
+        <S.TrackPlayImageWrapper isDarkTheme={isDarkTheme}>
+          {trackIcon}
+        </S.TrackPlayImageWrapper>
         <S.TrackPlayName>{trackTitleTrack}</S.TrackPlayName>
         <S.TrackPlayAuthor>{trackTitleAuthor}</S.TrackPlayAuthor>
       </S.TrackPlayContain>
-      <PlayerFavoriteButtons/>
+      <PlayerFavoriteButtons />
     </S.TrackPlay>
   );
 };

@@ -1,11 +1,12 @@
 import getCookie from './get-cookie';
+import { StaredUserProps } from '../types';
 
-const username = getCookie('username');
-
-export const checkFavoriteTrack = (arr: any) => {
+export const checkFavoriteTrack = (arr: StaredUserProps[] | undefined) => {
+  const cookieUsername = getCookie('username');
   let isFavorite = false;
-  arr.forEach((user: any) => {
-    if (user.username === username) {
+
+  arr?.forEach(({ username }: StaredUserProps) => {
+    if (username === cookieUsername) {
       isFavorite = true;
     }
   });

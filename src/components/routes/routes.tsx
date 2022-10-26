@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from '../pages/NotFound';
 import LoginPage from '../pages/Login';
@@ -7,23 +7,26 @@ import ProtectedRoute from '../protected-route';
 import Main from '../pages/Main';
 import PersonalPlaylist from '../pages/PersonalPlaylist';
 import CustomPlaylist from '../pages/CustomPlaylist';
-import Bar from '../bar';
-import { useSelector } from 'react-redux';
-import { refreshToken } from '../../utils/refresh-token';
+import BarLayout from '../layout/barLayout';
+import { useAppSelector } from '../../store/hooks';
 
 const AppRoutes = () => {
-  const isLogin = useSelector((state: any) => state.auth.isLogin);
+  const isLogin = useAppSelector((state) => state.auth.isLogin);
   const homepage = isLogin ? <Main /> : <LoginPage />;
-
-  refreshToken();
 
   return (
     <div>
       <Routes>
-        <Route element={<ProtectedRoute isLogin={isLogin}/>}>
-          <Route path="skyprofy-ts/personal" element={<PersonalPlaylist />} />
-          <Route path="skyprofy-ts/main" element={<Main />} />
-          <Route path="skyprofy-ts/playlist/:id" element={<CustomPlaylist />} />
+        <Route element={<ProtectedRoute isLogin={isLogin} />}>
+          <Route element={<BarLayout />}>
+            <Route path="skyprofy-ts/personal" element={<PersonalPlaylist />} />
+            <Route path="skyprofy-ts/" element={<Main />} />
+            <Route path="skyprofy-ts/main" element={<Main />} />
+            <Route
+              path="skyprofy-ts/playlist/:id"
+              element={<CustomPlaylist />}
+            />
+          </Route>
         </Route>
         <Route path="skyprofy-ts/" element={homepage} />
         <Route path="skyprofy-ts/registration" element={<RegistrationPage />} />

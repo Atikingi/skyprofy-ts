@@ -4,6 +4,12 @@ export const FilterItemsYearWrapper = styled.div`
   display: flex;
 `;
 
+export const FilterItemsYearLabel = styled.label`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const FilterYearLabel = styled.label<{ isDarkTheme: boolean }>`
   --color: ${props => props.isDarkTheme ? '#FFFFFF' : '#000000'};
   margin-left: 10px;

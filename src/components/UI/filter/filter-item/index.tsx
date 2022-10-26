@@ -3,15 +3,27 @@ import * as S from './style';
 import { ThemeContext } from '../../../context/themeContext';
 
 interface FilterItemProps {
-  text: string,
-  href: string
+  value: string;
+  onClickFunction: React.MouseEventHandler<HTMLInputElement>
 }
 
-const FilterItem = ({ text, href }: FilterItemProps) => {
+const FilterItem = ({ value, onClickFunction }: FilterItemProps) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (
-    <S.FilterItemLink isDarkTheme={isDarkTheme} href={href}>{text}</S.FilterItemLink>
+    <S.FilterItemsLabel htmlFor="filter" isDarkTheme={isDarkTheme}>
+      <S.FilterItem
+        id={value}
+        name="filter"
+        type="checkbox"
+        value={value}
+        isDarkTheme={isDarkTheme}
+        onClick={onClickFunction}
+      />
+      <S.FilterLabel isDarkTheme={isDarkTheme} htmlFor={value}>
+        {value}
+      </S.FilterLabel>
+    </S.FilterItemsLabel>
   );
 };
 

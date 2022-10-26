@@ -1,10 +1,9 @@
 import React, { ChangeEvent, useContext } from 'react';
-import * as S from './style';
-import { ThemeContext } from '../../context/themeContext';
 import SearchIcon from '../../icons/searchIcon';
 import { useDispatch } from 'react-redux';
 import { search } from '../../../store/slices/searchSlice';
-import { store } from '../../../store/store';
+import { ThemeContext } from '../../context/themeContext';
+import * as S from './style';
 
 const Search = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -21,7 +20,7 @@ const Search = () => {
         <SearchIcon aria-label="search" />
       </S.SearchIconWrapper>
       <S.SearchInput
-        onChange={(e) => onChangeHandler(e)}
+        onChange={onChangeHandler}
         isDarkTheme={isDarkTheme}
         type="search"
         placeholder="Поиск"

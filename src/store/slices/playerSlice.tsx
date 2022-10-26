@@ -8,7 +8,6 @@ interface StateProps {
   ids: number[];
   isShuffle: boolean;
   isRepeat: boolean;
-  page: number
 }
 
 const initialState: StateProps = {
@@ -18,8 +17,7 @@ const initialState: StateProps = {
   id: 8,
   ids: [],
   isShuffle: false,
-  isRepeat: false,
-  page: 1
+  isRepeat: false
 };
 
 export const playerSlice = createSlice({
@@ -33,16 +31,10 @@ export const playerSlice = createSlice({
     getCurrentTrack: (state, action: PayloadAction<string>) => {
       state.currentTrackLink = action.payload;
     },
-    pageUp: (state) => {
-      state.page++;
-    },
-    clearPage: (state) => {
-      state.page = 1;
-    },
     getTrackId: (state, action: PayloadAction<number>) => {
       state.id = action.payload;
     },
-    getTracksId: (state, action: PayloadAction<any>) => {
+    getTracksId: (state, action: PayloadAction<number>) => {
       state.ids.push(action.payload);
     },
     clearTracksId: (state) => {
@@ -84,9 +76,7 @@ export const {
   playPrevTrack,
   shuffleTracks,
   sortTracks,
-  repeatTrack,
-  pageUp,
-  clearPage
+  repeatTrack
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

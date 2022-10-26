@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { CenterBlock } from '../../main/center-block/style';
-import Layout from '../../layout/Layout';
-import Search from '../../UI/search';
-import * as S from '../../main/center-block/style';
 import Filter from '../../UI/filter';
 import Content from '../../main/center-block/content';
+import Layout from '../../layout/Layout';
+import Search from '../../UI/search';
 import { ThemeContext } from '../../context/themeContext';
+import { CenterBlock } from '../../main/center-block/style';
+import * as S from '../../main/center-block/style';
 
 const Main = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -16,7 +16,7 @@ const Main = () => {
         <Search />
         <S.CenterBlockTitle isDarkTheme={isDarkTheme}>Треки</S.CenterBlockTitle>
         <Filter />
-        <Content/>
+        <Content />
       </CenterBlock>
     </Layout>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
-import * as S from './style';
 import RegistrationForm from './registration-form';
+import * as S from './style';
 
 const Registration = () => {
   return (
     <S.RegistrationWrapper>
-      <RegistrationForm/>
+      <RegistrationForm />
     </S.RegistrationWrapper>
   );
 };

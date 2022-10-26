@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import * as S from './style';
 import LikeIcon from '../../../../../icons/likeIcon';
+import React, { useContext } from 'react';
 import { ThemeContext } from '../../../../../context/themeContext';
+import * as S from './style';
 
 interface Props {
   trackTime: string;
-  isFavorite: boolean
+  isFavorite: boolean;
 }
 
 const TrackTime = ({ trackTime, isFavorite }: Props) => {
@@ -14,7 +14,10 @@ const TrackTime = ({ trackTime, isFavorite }: Props) => {
   return (
     <S.TrackTime>
       <S.TrackTimeWrapper>
-        <S.TrackLikeIconWrapper isFavorite={isFavorite} isDarkTheme={isDarkTheme}>
+        <S.TrackLikeIconWrapper
+          isFavorite={isFavorite}
+          isDarkTheme={isDarkTheme}
+        >
           <LikeIcon aria-label="like" />
         </S.TrackLikeIconWrapper>
         <S.TrackTimeText>{trackTime}</S.TrackTimeText>

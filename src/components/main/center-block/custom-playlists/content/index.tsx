@@ -1,7 +1,7 @@
 import React from 'react';
 import PlaylistTitle from '../../playlist/playlist-title';
-import * as S from '../../style';
 import CustomPlaylist from '../playlist/index.ts';
+import * as S from '../../style';
 
 const CustomContent = () => {
   return (

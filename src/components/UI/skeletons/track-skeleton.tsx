@@ -5,12 +5,12 @@ const TrackSkeleton = () => {
   return (
     <S.TrackSkeletonWrapper>
       <S.TrackTitleWrapper>
-        <S.TrackImageSkeleton/>
-        <S.TrackTitleSkeleton/>
+        <S.TrackImageSkeleton />
+        <S.TrackTitleSkeleton />
       </S.TrackTitleWrapper>
-      <S.TrackAuthorSkeleton/>
-      <S.TrackAlbumSkeleton/>
-      <S.TrackTimeSkeleton/>
+      <S.TrackAuthorSkeleton />
+      <S.TrackAlbumSkeleton />
+      <S.TrackTimeSkeleton />
     </S.TrackSkeletonWrapper>
   );
 };

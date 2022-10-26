@@ -1,39 +1,38 @@
-import React, { useContext, useEffect } from 'react';
-import * as S from './style';
-import { ThemeContext } from '../../context/themeContext';
 import PrevIcon from '../../icons/prevIcon';
 import PauseIcon from '../../icons/iconPause';
 import PlayIcon from '../../icons/playIcon';
 import NextIcon from '../../icons/nextIcon';
 import RepeatIcon from '../../icons/repeatIcon';
 import ShuffleIcon from '../../icons/shuffleIcon';
-import { useDispatch, useSelector } from 'react-redux';
+import * as S from './style';
+import React, { useContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { ThemeContext } from '../../context/themeContext';
 import {
   getTrackId,
   play,
   playNextTrack,
-  playPrevTrack, repeatTrack,
+  playPrevTrack,
+  repeatTrack,
   shuffleTracks,
   sortTracks
 } from '../../../store/slices/playerSlice';
+import { useAppSelector } from '../../../store/hooks';
 
 interface Props {
-  track: HTMLAudioElement
+  track: HTMLAudioElement;
 }
 
 const PlayerControls = ({ track }: Props) => {
-  const { isDarkTheme } = useContext(ThemeContext);
-
-  const isPlaying = useSelector((state: any) => state.player.isPlaying);
-  const currentTrack = useSelector((state: any) => state.player.currentTrackLink);
-  const trackIds = useSelector((state: any) => state.player.ids);
-  const trackId = useSelector((state: any) => state.player.id);
-  const isShuffle = useSelector((state: any) => state.player.isShuffle);
-  const isRepeat = useSelector((state: any) => state.player.isRepeat);
-
   const dispatch = useDispatch();
 
-  // track.autoplay = true;
+  const { isDarkTheme } = useContext(ThemeContext);
+
+  const isPlaying = useAppSelector((state) => state.player.isPlaying);
+  const trackIds = useAppSelector((state) => state.player.ids);
+  const trackId = useAppSelector((state) => state.player.id);
+  const isShuffle = useAppSelector((state) => state.player.isShuffle);
+  const isRepeat = useAppSelector((state) => state.player.isRepeat);
 
   const onTogglePlay = () => {
     dispatch(play(!isPlaying));
@@ -50,7 +49,7 @@ const PlayerControls = ({ track }: Props) => {
 
   const onPrevTrack = () => {
     const currentTrack = +trackIds.indexOf(trackId);
-    if (currentTrack - 1 === -1) {
+    if (!currentTrack) {
       dispatch(getTrackId(trackIds[0]));
       return;
     }
@@ -68,10 +67,9 @@ const PlayerControls = ({ track }: Props) => {
 
   useEffect(() => {
     if (isPlaying) {
-      track.play()
-        .catch((e) => {
-          console.log(e);
-        });
+      track.play().catch((e) => {
+        console.log(e);
+      });
     } else {
       track.pause();
     }
@@ -79,34 +77,37 @@ const PlayerControls = ({ track }: Props) => {
 
   return (
     <S.PlayerControls>
-      <S.PlayerButton onClick={() => onPrevTrack()}>
+      <S.PlayerButton onClick={onPrevTrack}>
         <S.PrevIconWrapper isDarkTheme={isDarkTheme}>
-          <PrevIcon aria-label="prev"/>
+          <PrevIcon aria-label="prev" />
         </S.PrevIconWrapper>
       </S.PlayerButton>
-      <S.PlayerButton onClick={() => onTogglePlay()}>
+      <S.PlayerButton onClick={onTogglePlay}>
         {isPlaying
-          ? <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
-            <PauseIcon aria-label="pause"/>
+          ? (
+          <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
+            <PauseIcon aria-label="pause" />
           </S.PlayIconWrapper>
-          : <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
-              <PlayIcon aria-label="play"/>
-            </S.PlayIconWrapper>
-        }
+            )
+          : (
+          <S.PlayIconWrapper isDarkTheme={isDarkTheme}>
+            <PlayIcon aria-label="play" />
+          </S.PlayIconWrapper>
+            )}
       </S.PlayerButton>
-      <S.PlayerButton onClick={() => onNextTrack()}>
+      <S.PlayerButton onClick={onNextTrack}>
         <S.NextIconWrapper isDarkTheme={isDarkTheme}>
-          <NextIcon aria-label="next"/>
+          <NextIcon aria-label="next" />
         </S.NextIconWrapper>
       </S.PlayerButton>
-      <S.PlayerButton onClick={() => onRepeat()}>
+      <S.PlayerButton onClick={onRepeat}>
         <S.RepeatIconWrapper isDarkTheme={isDarkTheme} isRepeat={isRepeat}>
-          <RepeatIcon aria-label="repeat"/>
+          <RepeatIcon aria-label="repeat" />
         </S.RepeatIconWrapper>
       </S.PlayerButton>
-      <S.PlayerButton onClick={() => onShuffle()}>
+      <S.PlayerButton onClick={onShuffle}>
         <S.ShuffleIconWrapper isDarkTheme={isDarkTheme} isShuffle={isShuffle}>
-          <ShuffleIcon aria-label='shuffle'/>
+          <ShuffleIcon aria-label="shuffle" />
         </S.ShuffleIconWrapper>
       </S.PlayerButton>
     </S.PlayerControls>

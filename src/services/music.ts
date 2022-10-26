@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store/store';
+import { CustomPlaylistProps } from '../types';
 
 export const musicApi = createApi({
   reducerPath: 'musicApi',
@@ -16,21 +17,31 @@ export const musicApi = createApi({
   }),
   endpoints: (builder) => ({
     getAllTracks: builder.query({
-      query: (page: string) => ({
-        url: `/catalog/track/all/?page=${page}`
-      })
-      // providesTags: ['Tracks']
+      query: () => ({
+        url: '/catalog/track/all'
+      }),
+      providesTags: ['Tracks']
     }),
     getTrackById: builder.query({
       query: (id: number) => ({
         url: `/catalog/track/${id}`
-      })
+      }),
+      providesTags: ['Tracks']
     }),
     getPlaylists: builder.query({
       query: () => '/catalog/selection/'
     }),
-    getPlaylistById: builder.query({
-      query: (id: number) => `/catalog/selection/${id}`
+    getFavoriteTracks: builder.query({
+      query: () => ({
+        url: '/catalog/track/favorite/all/'
+      }),
+      providesTags: ['Tracks']
+    }),
+    getPlaylistById: builder.query<CustomPlaylistProps, string | undefined>({
+      query: (id: string) => ({
+        url: `/catalog/selection/${id}`
+      }),
+      providesTags: ['Tracks']
     }),
     userSignup: builder.mutation({
       query: ({ ...payload }) => ({
@@ -64,14 +75,15 @@ export const musicApi = createApi({
       query: (payload) => ({
         url: `/catalog/track/${payload}/favorite/`,
         method: 'POST'
-      })
-      // invalidatesTags: ['Tracks']
+      }),
+      invalidatesTags: ['Tracks']
     }),
     deleteFavoriteTrack: builder.mutation({
       query: (payload) => ({
         url: `/catalog/track/${payload}/favorite/`,
         method: 'DELETE'
-      })
+      }),
+      invalidatesTags: ['Tracks']
     })
   })
 });
@@ -81,10 +93,11 @@ export const {
   useGetTrackByIdQuery,
   useGetPlaylistByIdQuery,
   useGetPlaylistsQuery,
+  useGetFavoriteTracksQuery,
   useUserSignupMutation,
   useUserLoginMutation,
   useGetTokenMutation,
   useRefreshTokenMutation,
   useAddFavoriteTrackMutation,
   useDeleteFavoriteTrackMutation
-}: any = musicApi;
+} = musicApi;

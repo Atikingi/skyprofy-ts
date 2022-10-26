@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import { ShowHideMenu } from '../../../../types';
-import * as S from './style';
 import { NavLink } from 'react-router-dom';
-import { ThemeContext } from '../../../context/themeContext';
 import LightThemeIcon from '../../../icons/lightThemeIcon';
 import DarkThemeIcon from '../../../icons/darkThemeIcon';
+import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { ThemeContext } from '../../../context/themeContext';
 import { setLogout } from '../../../../store/slices/authSlice';
+import { ShowHideMenu } from '../../../../types';
+import * as S from './style';
 
 interface Props {
   text: string;
@@ -40,11 +40,11 @@ const Menu = ({ menuActive }: ShowHideMenu) => {
         <NavLink to="/skyprofy-ts" onClick={onLogout}>
           <MenuList text="Выйти" />
         </NavLink>
-        <S.ThemeToggleButtonWrapper isDarkTheme={isDarkTheme} onClick={toggleTheme}>
-          {isDarkTheme
-            ? <DarkThemeIcon/>
-            : <LightThemeIcon/>
-          }
+        <S.ThemeToggleButtonWrapper
+          isDarkTheme={isDarkTheme}
+          onClick={toggleTheme}
+        >
+          {isDarkTheme ? <DarkThemeIcon /> : <LightThemeIcon />}
         </S.ThemeToggleButtonWrapper>
       </S.MenuList>
     </S.Menu>

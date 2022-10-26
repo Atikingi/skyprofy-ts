@@ -1,8 +1,8 @@
+import VolumeIcon from '../../icons/volumeIcon';
+import VolumeOffIcon from '../../icons/volumeOffIcon';
 import React, { useContext, useState } from 'react';
 import * as S from './style';
 import { ThemeContext } from '../../context/themeContext';
-import VolumeIcon from '../../icons/volumeIcon';
-import VolumeOffIcon from '../../icons/volumeOffIcon';
 
 interface Props {
   track: HTMLAudioElement;

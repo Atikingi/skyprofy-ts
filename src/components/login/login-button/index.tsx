@@ -1,38 +1,49 @@
-import React, { useEffect } from 'react';
-import * as S from './style';
-import { useGetTokenMutation, useUserLoginMutation } from '../../../services/music';
-import { useDispatch, useSelector } from 'react-redux';
-import { setLogin, setToken } from '../../../store/slices/authSlice';
 import { Navigate } from 'react-router-dom';
+import { setLogin, setToken } from '../../../store/slices/authSlice';
+import React, { useEffect } from 'react';
+import {
+  useGetTokenMutation,
+  useUserLoginMutation
+} from '../../../services/music';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../../store/hooks';
+import * as S from './style';
 
 interface Props {
-  email: string,
-  password: string
+  email: string;
+  password: string;
+}
+
+interface Error {
+  data: {
+    non_field_errors: string[],
+    detail: string
+  }
 }
 
 const LoginButton = ({ email, password }: Props) => {
   const dispatch = useDispatch();
 
-  const isLogin = useSelector((state: any) => state.auth.isLogin);
+  const isLogin = useAppSelector((state) => state.auth.isLogin);
 
-  const [login, { data, isSuccess, isError, error }] = useUserLoginMutation();
-  const [getToken, { data: token, isError: isTokenError, error: tokenError }] = useGetTokenMutation();
+  const [login, { data, isSuccess, error }] = useUserLoginMutation();
+  const [getToken, { data: token, error: tokenError }] =
+    useGetTokenMutation();
 
   const onSubmitForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!email || !password) {
       alert('Вы не ввели данные');
     } else {
-      login({
+      void login({
         email,
         password
       });
 
-      getToken({
+      void getToken({
         email,
         password
       });
-      console.log('form SUBMIT');
     }
   };
 
@@ -45,16 +56,16 @@ const LoginButton = ({ email, password }: Props) => {
     }
   }, [token]);
 
-  if (isTokenError) {
-    console.log(tokenError);
-  }
-
   return (
     <React.Fragment>
-      {isError && <S.ErrorMessage>{error.data.non_field_errors[0]}</S.ErrorMessage>}
-      {isTokenError && <S.ErrorMessage>{tokenError.data.detail}</S.ErrorMessage>}
+      {error && (
+        <S.ErrorMessage>{(error as Error).data.non_field_errors[0]}</S.ErrorMessage>
+      )}
+      {tokenError && (
+        <S.ErrorMessage>{(tokenError as Error).data.detail}</S.ErrorMessage>
+      )}
       <S.LoginButton onClick={(e) => onSubmitForm(e)}>Войти</S.LoginButton>
-      {isLogin && <Navigate to='/skyprofy-ts/main' replace={true}/>}
+      {isLogin && <Navigate to="/skyprofy-ts/main" replace={true} />}
     </React.Fragment>
   );
 };

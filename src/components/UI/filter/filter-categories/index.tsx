@@ -4,16 +4,17 @@ import { ThemeContext } from '../../../context/themeContext';
 
 interface Props {
   text: string,
-  isActive: boolean
+  isActive: boolean,
+  count: string
 }
 
-const FilterCategories = ({ text, isActive }: Props) => {
+const FilterCategories = ({ text, isActive, count }: Props) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (
     <S.FilterButton isActive={isActive} isDarkTheme={isDarkTheme}>
       <S.Title isDarkTheme={isDarkTheme}>{text}</S.Title>
-      <S.FilterButtonCount isActive={isActive}>5</S.FilterButtonCount>
+      <S.FilterButtonCount isActive={isActive}>{count}</S.FilterButtonCount>
     </S.FilterButton>
   );
 };

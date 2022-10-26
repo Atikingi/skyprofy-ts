@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import * as S from '../../playlist/style';
-import { PlaylistProps } from '../../../../../types';
 import TrackSkeleton from '../../../../UI/skeletons/track-skeleton';
 import PlaylistItem from '../../playlist/playlist-item';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearTracksId, getTracksId } from '../../../../../store/slices/playerSlice';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../../../../store/hooks';
 import { useGetPlaylistByIdQuery } from '../../../../../services/music';
-import { getPlaylistName } from '../../../../../store/slices/playlistsSlice';
 import { useParams } from 'react-router-dom';
+import {
+  clearTracksId,
+  getTracksId
+} from '../../../../../store/slices/playerSlice';
+import { getPlaylistName } from '../../../../../store/slices/playlistsSlice';
 import { checkFavoriteTrack } from '../../../../../utils/check-favorite-track';
-
-interface Props {
-  playlist: PlaylistProps[];
-}
+import { TrackProps } from '../../../../../types';
+import * as S from '../../playlist/style';
 
 const CustomPlaylist = () => {
   const countOfSkeletons: number[] = [];
@@ -27,20 +27,19 @@ const CustomPlaylist = () => {
     return `${minutes}:${seconds}`;
   };
 
-  let tracks: any;
-
   const dispatch = useDispatch();
-
-  const trackTitle = useSelector((state: any) => state.search.searchValue);
-
   const params = useParams();
+
+  const trackTitle = useAppSelector((state) => state.search.searchValue);
+
   const playlistId = params.id;
 
-  const { data, isLoading, isSuccess, isError, error } = useGetPlaylistByIdQuery(playlistId);
+  const { data, isLoading, isSuccess } =
+    useGetPlaylistByIdQuery(playlistId);
 
   useEffect(() => {
     dispatch(clearTracksId());
-    tracks?.map((track: any) => dispatch(getTracksId(track.props.id)));
+    data?.items.map((track: TrackProps) => dispatch(getTracksId(track.id)));
   }, [data]);
 
   useEffect(() => {
@@ -49,49 +48,48 @@ const CustomPlaylist = () => {
     }
   }, [playlistId, data]);
 
-  if (isError) {
-    return (
-      <S.PlaylistContent>
-        <p>{error}</p>
-      </S.PlaylistContent>
-    );
-  }
-
   if (isLoading) {
     return (
       <S.PlaylistContent>
-        {countOfSkeletons.map((arr, i) => <TrackSkeleton key={i} />)}
+        {countOfSkeletons.map((arr, i) => (
+          <TrackSkeleton key={i} />
+        ))}
       </S.PlaylistContent>
     );
   }
 
   if (isSuccess) {
-    tracks = data.items.filter(({ name }: any) => (name).toLowerCase().includes(trackTitle)).map(({
-      id,
-      name,
-      author,
-      album,
-      track_file,
-      duration_in_seconds,
-      stared_user
-    }: any) => (
-        <PlaylistItem
-          key={id}
-          id={id}
-          trackTitleLink={track_file}
-          trackTitleText={name}
-          trackAuthorLink={track_file}
-          trackAuthorText={author}
-          trackAlbumLink={track_file}
-          trackAlbumText={album}
-          trackTime={formatDuration(duration_in_seconds)}
-          isFavorite={checkFavoriteTrack(stared_user)}
-        />
-    ));
     return (
-        <S.PlaylistContent>
-          {tracks}
-        </S.PlaylistContent>
+      <S.PlaylistContent>
+        {data?.items
+          .filter(({ name }: TrackProps) =>
+            name.toLowerCase().includes(trackTitle)
+          )
+          .map(
+            ({
+              id,
+              name,
+              author,
+              album,
+              track_file,
+              duration_in_seconds,
+              stared_user
+            }: TrackProps) => (
+              <PlaylistItem
+                key={id}
+                id={id}
+                trackTitleLink={track_file}
+                trackTitleText={name}
+                trackAuthorLink={track_file}
+                trackAuthorText={author}
+                trackAlbumLink={track_file}
+                trackAlbumText={album}
+                trackTime={formatDuration(duration_in_seconds)}
+                isFavorite={checkFavoriteTrack(stared_user)}
+              />
+            )
+          )}
+      </S.PlaylistContent>
     );
   }
   return (

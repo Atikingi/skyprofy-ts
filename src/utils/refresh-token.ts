@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import getCookie from './get-cookie';
 import { useRefreshTokenMutation } from '../services/music';
 import { useEffect } from 'react';
 import { setLogin, setToken } from '../store/slices/authSlice';
+import getCookie from './get-cookie';
 
 export const refreshToken = () => {
   const dispatch = useDispatch();
@@ -11,11 +11,11 @@ export const refreshToken = () => {
 
   useEffect(() => {
     if (tokenCookie) {
-      getToken({ refresh: tokenCookie });
+      void getToken({ refresh: tokenCookie });
 
       dispatch(setLogin());
       setInterval(() => {
-        getToken({ refresh: tokenCookie });
+        void getToken({ refresh: tokenCookie });
       }, 600000);
     }
   }, []);
