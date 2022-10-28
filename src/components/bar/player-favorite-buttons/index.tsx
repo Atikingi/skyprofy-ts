@@ -40,7 +40,7 @@ const playerFavoriteButtons = () => {
     <S.TrackPlayLikeDisWrapper>
       <S.TrackPlayLikeButton onClick={onAddTrack}>
         <S.TrackPlayLikeDisButtonIconWrapper isDarkTheme={isDarkTheme}>
-          <LikeIcon aria-label="like" />
+          <LikeIcon aria-label="like"/>
         </S.TrackPlayLikeDisButtonIconWrapper>
       </S.TrackPlayLikeButton>
       <S.TrackPlayDisButton onClick={onDeleteTrack}>

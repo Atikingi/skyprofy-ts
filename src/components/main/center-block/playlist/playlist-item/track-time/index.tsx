@@ -17,6 +17,7 @@ const TrackTime = ({ trackTime, isFavorite }: Props) => {
         <S.TrackLikeIconWrapper
           isFavorite={isFavorite}
           isDarkTheme={isDarkTheme}
+          data-testid='Favorite'
         >
           <LikeIcon aria-label="like" />
         </S.TrackLikeIconWrapper>
