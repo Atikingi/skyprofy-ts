@@ -25,7 +25,7 @@ export default createGlobalStyle`
     height: 100%;
     font-family: 'StratosSkyeng', sans-serif;
     color: #FFFFFF;
-
+    overflow: hidden;
   }
 
   ul li {

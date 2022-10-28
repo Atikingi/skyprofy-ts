@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './components/routes/routes';
 import './fonts/stratos/Stratos-Regular.woff';
 import './fonts/stratos/Stratos-Regular.woff2';
 import { ThemeContext } from './components/context/themeContext';
+import { store } from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,17 +19,17 @@ const Container = () => {
     setIsDarkTheme(!isDarkTheme);
   };
 
-  const isLogin = Boolean(localStorage.getItem('token'));
-
   return (
-    <ThemeContext.Provider value={{
-      isDarkTheme,
-      toggleTheme
-    }}>
-      <BrowserRouter>
-        <AppRoutes isLogin={isLogin} />
-      </BrowserRouter>
-    </ThemeContext.Provider>
+    <Provider store={store}>
+      <ThemeContext.Provider value={{
+        isDarkTheme,
+        toggleTheme
+      }}>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </ThemeContext.Provider>
+    </Provider>
   );
 };
 

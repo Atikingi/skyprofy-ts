@@ -1,45 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import SidebarListItem from '../sidebar-item';
-import * as S from '../style';
 import { Link } from 'react-router-dom';
+import React from 'react';
+import SidebarListItem from '../sidebar-item';
+import { useGetPlaylistsQuery } from '../../../../services/music';
+import { CustomPlaylistProps } from '../../../../types';
+import * as S from '../style';
 
 const SidebarList = () => {
-  const [isLoading, setLoading] = useState<boolean>(true);
+  let content;
 
-  useEffect(() => {
-    const loadTimer = setTimeout(() => {
-      setLoading(false);
-    }, 5000);
-    return () => {
-      clearTimeout(loadTimer);
-    };
-  });
+  const { data, isSuccess, isLoading } = useGetPlaylistsQuery('');
 
-  return (
-    <S.SidebarList>
-      <Link to="/skyprofy-ts/playlist/1">
+  if (isSuccess) {
+    content = data?.map(({ id }: CustomPlaylistProps) => (
+      <Link to={`/skyprofy-ts/playlist/${id}`} key={id}>
         <SidebarListItem
-          src="/skyprofy-ts/img/playlist01.png"
-          alt="day's playlist"
+          id={id}
+          src={`/skyprofy-ts/img/playlist0${id}.png`}
           isLoading={isLoading}
         />
       </Link>
-      <Link to="/skyprofy-ts/playlist/2">
-        <SidebarListItem
-          src="/skyprofy-ts/img/playlist02.png"
-          alt="100th hits"
-          isLoading={isLoading}
-        />
-      </Link>
-      <Link to="/skyprofy-ts/playlist/3">
-        <SidebarListItem
-          src="/skyprofy-ts/img/playlist03.png"
-          alt="Indie charge"
-          isLoading={isLoading}
-        />
-      </Link>
-    </S.SidebarList>
-  );
+    ));
+  }
+
+  return <S.SidebarList>{content}</S.SidebarList>;
 };
 
 export default SidebarList;

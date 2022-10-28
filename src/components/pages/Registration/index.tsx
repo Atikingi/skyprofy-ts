@@ -5,7 +5,7 @@ import LoginLayout from '../../layout/LoginLayout';
 const RegistrationPage = () => {
   return (
     <LoginLayout>
-      <Registration/>
+      <Registration />
     </LoginLayout>
   );
 };

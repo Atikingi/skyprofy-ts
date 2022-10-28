@@ -27,3 +27,56 @@ export const SkeletonImage = styled(Skeleton)`
   width: 51px;
   height: 51px;
 `;
+
+export const TrackSkeletonWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 51px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const TrackTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 447px;
+  gap: 17px;
+
+  overflow: hidden;
+`;
+
+export const TrackImageSkeleton = styled(Skeleton)`
+  position: relative;
+  overflow: hidden;
+  width: 51px;
+  height: 51px;
+  padding: 16px;
+`;
+
+export const TrackTitleSkeleton = styled(Skeleton)`
+  position: relative;
+  overflow: hidden;
+  width: 371px;
+`;
+
+export const TrackAuthorSkeleton = styled(Skeleton)`
+  position: relative;
+  overflow: hidden;
+  width: 321px;
+`;
+
+export const TrackAlbumSkeleton = styled(Skeleton)`
+  position: relative;
+  overflow: hidden;
+  width: 245px;
+`;
+
+export const TrackTimeSkeleton = styled(Skeleton)`
+  position: relative;
+  overflow: hidden;
+  width: 61px;
+`;

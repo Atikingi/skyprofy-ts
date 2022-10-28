@@ -9,6 +9,7 @@ const COLORS = {
 };
 
 export const RegistrationForm = styled.form`
+  position: relative;
   width: 366px;
   height: 439px;
   display: flex;
@@ -63,4 +64,16 @@ export const RegistrationFormButton = styled.button`
   border-radius: 6px;
   border: 0;
   cursor: pointer;
+`;
+
+export const ErrorPasswordMessage = styled.span`
+  position: absolute;
+  bottom: 0;
+  max-width: 240px;
+  color: lightcoral;
+  text-align: center;
+  font-size: 12px;
+`;
+export const ErrorEmailMessage = styled(ErrorPasswordMessage)`
+  position: relative;
 `;

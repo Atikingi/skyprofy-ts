@@ -52,6 +52,7 @@ export const FilterItemsWrapperYear = styled.div<{isActive: string | null, isDar
   --bg-color: ${props => props.isDarkTheme ? '#313131' : '#FFFFFF'};
   display: ${props => props.isActive === 'year' ? 'block' : 'none'};
   position: absolute;
+  z-index: 20;
   top: 50px;
   padding: 34px;
   width: 403px;

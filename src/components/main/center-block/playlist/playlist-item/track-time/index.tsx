@@ -1,25 +1,27 @@
-import React from 'react';
-import { Skeleton } from '../../../../../UI/skeletons/style';
-import * as S from './style';
 import LikeIcon from '../../../../../icons/likeIcon';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../../../../context/themeContext';
+import * as S from './style';
 
 interface Props {
-  isLoading: boolean;
   trackTime: string;
+  isFavorite: boolean;
 }
 
-const TrackTime = ({ isLoading, trackTime }: Props) => {
+const TrackTime = ({ trackTime, isFavorite }: Props) => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
     <S.TrackTime>
-      {isLoading
-        ? <Skeleton />
-        : <S.TrackTimeWrapper>
-          <S.TrackLikeIconWrapper>
-            <LikeIcon aria-label='like'/>
-          </S.TrackLikeIconWrapper>
-          <S.TrackTimeText>{trackTime}</S.TrackTimeText>
-        </S.TrackTimeWrapper>
-      }
+      <S.TrackTimeWrapper>
+        <S.TrackLikeIconWrapper
+          isFavorite={isFavorite}
+          isDarkTheme={isDarkTheme}
+        >
+          <LikeIcon aria-label="like" />
+        </S.TrackLikeIconWrapper>
+        <S.TrackTimeText>{trackTime}</S.TrackTimeText>
+      </S.TrackTimeWrapper>
     </S.TrackTime>
   );
 };

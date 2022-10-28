@@ -2,16 +2,19 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 interface Props {
-  redirectPath?: string,
-  isAllowed: boolean
+  redirectPath?: string;
+  isLogin: boolean;
 }
 
-export const ProtectedRoute = ({ redirectPath = 'skyprofy-ts/Login', isAllowed }: Props) => {
-  if (!isAllowed) {
-    return <Navigate to={redirectPath} replace={true}/>;
+export const ProtectedRoute = ({
+  redirectPath = 'skyprofy-ts/Login',
+  isLogin
+}: Props) => {
+  if (!isLogin) {
+    return <Navigate to={redirectPath} replace={true} />;
   }
 
-  return <Outlet/>;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

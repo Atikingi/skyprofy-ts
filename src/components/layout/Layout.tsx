@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
 import Navigation from '../main/nav';
 import Sidebar from '../main/sidebar';
-import Bar from '../bar';
+import React, { useContext } from 'react';
 import * as S from './style';
 import GlobalStyles from '../../style/global';
 import { ThemeContext } from '../context/themeContext';
@@ -20,7 +19,6 @@ const Layout = ({ children }: Props) => {
           <Navigation />
           {children}
           <Sidebar />
-          <Bar />
         </main>
       </S.Container>
       <GlobalStyles />

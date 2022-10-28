@@ -1,71 +1,55 @@
-import React, { useContext } from 'react';
-import * as S from './style';
 import { SkeletonImage, Skeleton } from '../../UI/skeletons/style';
-import { ThemeContext } from '../../context/themeContext';
-import LikeIcon from '../../icons/likeIcon';
-import DislikeIcon from '../../icons/dislikeIcon';
 import NoteIcon from '../../icons/noteIcon';
+import PlayerFavoriteButtons from '../player-favorite-buttons';
+import { useGetTrackByIdQuery } from '../../../services/music';
+import { useAppSelector } from '../../../store/hooks';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../context/themeContext';
+import * as S from './style';
 
-interface Props {
-  trackLink: string;
-  trackName: string;
-  authorLink: string;
-  authorName: string;
-  isLoading: boolean;
-}
-
-const PlayerTrack = ({
-  trackLink,
-  trackName,
-  authorLink,
-  authorName,
-  isLoading = true
-}: Props) => {
+const PlayerTrack = () => {
   const { isDarkTheme } = useContext(ThemeContext);
+
+  const trackId = useAppSelector(state => state.player.id);
+  const { data, isLoading, isSuccess } = useGetTrackByIdQuery(trackId);
 
   let trackIcon;
   let trackTitleAuthor;
-  let trackTitleAlbum;
+  let trackTitleTrack;
+
   if (isLoading) {
     trackIcon = <SkeletonImage />;
     trackTitleAuthor = <Skeleton />;
-    trackTitleAlbum = <Skeleton />;
-  } else {
+    trackTitleTrack = <Skeleton />;
+  }
+
+  if (isSuccess) {
     trackIcon = (
       <S.TrackPlayIconWrapper>
-        <NoteIcon aria-label='music'/>
+        <NoteIcon aria-label="music" />
       </S.TrackPlayIconWrapper>
     );
-    trackTitleAuthor = (
-      <S.TrackPlayAuthorLink href={trackLink} isDarkTheme={isDarkTheme}>
-        {trackName}
-      </S.TrackPlayAuthorLink>
+    trackTitleTrack = (
+      <S.TrackPlayLink href={data.track_file} isDarkTheme={isDarkTheme}>
+        {data.name}
+      </S.TrackPlayLink>
     );
-    trackTitleAlbum = (
-      <S.TrackPlayAlbumLink href={authorLink} isDarkTheme={isDarkTheme}>
-        {authorName}
-      </S.TrackPlayAlbumLink>
+    trackTitleAuthor = (
+      <S.TrackPlayAuthorLink href={data.track_file} isDarkTheme={isDarkTheme}>
+        {data.author}
+      </S.TrackPlayAuthorLink>
     );
   }
   return (
     <S.TrackPlay>
       <S.TrackPlayContain>
-        <S.TrackPlayImageWrapper isDarkTheme={isDarkTheme}>{trackIcon}</S.TrackPlayImageWrapper>
+        <S.TrackPlayImageWrapper isDarkTheme={isDarkTheme}>
+          {trackIcon}
+        </S.TrackPlayImageWrapper>
+        <S.TrackPlayName>{trackTitleTrack}</S.TrackPlayName>
         <S.TrackPlayAuthor>{trackTitleAuthor}</S.TrackPlayAuthor>
-        <S.TrackPlayAlbum>{trackTitleAlbum}</S.TrackPlayAlbum>
       </S.TrackPlayContain>
-      <S.TrackPlayLikeDisWrapper>
-        <S.TrackPlayLikeButton>
-          <S.TrackPlayLikeDisButtonIconWrapper isDarkTheme={isDarkTheme}>
-            <LikeIcon aria-label="like"/>
-          </S.TrackPlayLikeDisButtonIconWrapper>
-        </S.TrackPlayLikeButton>
-        <S.TrackPlayDisButton>
-          <S.TrackPlayLikeDisButtonIconWrapper isDarkTheme={isDarkTheme}>
-            <DislikeIcon aria-label="dislike"/>
-          </S.TrackPlayLikeDisButtonIconWrapper>
-        </S.TrackPlayDisButton>
-      </S.TrackPlayLikeDisWrapper>
+      <PlayerFavoriteButtons />
     </S.TrackPlay>
   );
 };

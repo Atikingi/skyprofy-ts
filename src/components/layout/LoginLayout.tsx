@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import { ThemeContext } from '../context/themeContext';
 import GlobalStyles from '../../style/global';
 import * as S from './style';
-import { ThemeContext } from '../context/themeContext';
 
 interface Props {
   children: React.ReactNode;

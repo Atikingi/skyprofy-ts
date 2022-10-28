@@ -1,34 +1,56 @@
-import React, { useContext, useState } from 'react';
 import FilterCategories from './filter-categories';
 import FilterItem from './filter-item';
-import { trackData } from '../../../mocks/track-data';
 import FilterItemYears from './filter-item-year';
-import * as S from './style';
+import React, { useContext, useState } from 'react';
+import { useAppSelector } from '../../../store/hooks';
+import { useDispatch } from 'react-redux';
 import { ThemeContext } from '../../context/themeContext';
+import * as S from './style';
+import {
+  addFilterByAuthor,
+  addFilterByGenre,
+  deleteAuthors,
+  deleteGenres
+} from '../../../store/slices/filterSlice';
 
 const Filter = () => {
   const { isDarkTheme } = useContext(ThemeContext);
+
+  const dispatch = useDispatch();
+
+  const genres = useAppSelector((state) => state.filter.genres);
+  const authors = useAppSelector((state) => state.filter.authors);
+  const filteredByYear = useAppSelector((state) => state.filter.filteredByYear);
+  const filteredByGenre = useAppSelector(
+    (state) => state.filter.filteredByGenre
+  );
+  const filteredByAuthor = useAppSelector(
+    (state) => state.filter.filteredByAuthor
+  );
+  const genresValue = useAppSelector((state) => state.filter.filterGenresValue);
+  const authorsValue = useAppSelector(
+    (state) => state.filter.filterAuthorsValue
+  );
+
   const [isActive, setActive] = useState<'author' | 'year' | 'genre' | null>(
     null
   );
 
-  enum Genre {
-    Rock = 'Рок',
-    HipHop = 'Хип-Хоп',
-    Jazz = 'Джаз',
-    Alternative = 'Альтернатива',
-    Rap = 'Рэп',
-    Classic = 'Классическая',
-  }
+  const onAddGenre = (e: React.MouseEvent<HTMLInputElement>) => {
+    if (!(e.target as HTMLInputElement).checked) {
+      dispatch(deleteGenres((e.target as HTMLInputElement).value));
+    } else {
+      dispatch(addFilterByGenre((e.target as HTMLInputElement).value));
+    }
+  };
 
-  const genre: Genre[] = [
-    Genre.Rock,
-    Genre.HipHop,
-    Genre.Jazz,
-    Genre.Alternative,
-    Genre.Rap,
-    Genre.Classic
-  ];
+  const onAddAuthor = (e: React.MouseEvent<HTMLInputElement>) => {
+    if (!(e.target as HTMLInputElement).checked) {
+      dispatch(deleteAuthors((e.target as HTMLInputElement).value));
+    } else {
+      dispatch(addFilterByAuthor((e.target as HTMLInputElement).value));
+    }
+  };
 
   return (
     <S.FilterWrapper>
@@ -38,17 +60,25 @@ const Filter = () => {
           setActive((prevState) => (prevState === null ? 'author' : null))
         }
       >
-        <FilterCategories text="исполнителю" isActive={isActive === 'author'} />
-        <S.FilterItemsWrapperAuthor isDarkTheme={isDarkTheme} isActive={isActive}
+        <FilterCategories
+          text="исполнителю"
+          isActive={filteredByAuthor}
+          count={String(authorsValue.length)}
+        />
+        <S.FilterItemsWrapperAuthor
+          isDarkTheme={isDarkTheme}
+          isActive={isActive}
         >
           <S.FilterItems isDarkTheme={isDarkTheme}>
-            {trackData[0].tracks.map((item) => (
-              <FilterItem
-                key={item.trackTitleText}
-                text={item.trackAuthorText}
-                href="#"
-              />
-            ))}
+            {authors
+              .filter((item, pos) => authors.indexOf(item) === pos)
+              .map((item: string) => (
+                <FilterItem
+                  key={item}
+                  value={item}
+                  onClickFunction={onAddAuthor}
+                />
+              ))}
           </S.FilterItems>
         </S.FilterItemsWrapperAuthor>
       </S.FilterButtonWrapper>
@@ -58,7 +88,11 @@ const Filter = () => {
           setActive((prevState) => (prevState === null ? 'year' : null))
         }
       >
-        <FilterCategories text="году выпуска" isActive={isActive === 'year'} />
+        <FilterCategories
+          text="году выпуска"
+          isActive={filteredByYear}
+          count="1"
+        />
         <S.FilterItemsWrapperYear isDarkTheme={isDarkTheme} isActive={isActive}>
           <FilterItemYears />
         </S.FilterItemsWrapperYear>
@@ -68,12 +102,25 @@ const Filter = () => {
           setActive((prevState) => (prevState === null ? 'genre' : null))
         }
       >
-        <FilterCategories text="жанру" isActive={isActive === 'genre'} />
-        <S.FilterItemsWrapperGenre isDarkTheme={isDarkTheme} isActive={isActive}>
+        <FilterCategories
+          text="жанру"
+          isActive={filteredByGenre}
+          count={String(genresValue.length)}
+        />
+        <S.FilterItemsWrapperGenre
+          isDarkTheme={isDarkTheme}
+          isActive={isActive}
+        >
           <S.FilterItems isDarkTheme={isDarkTheme}>
-            {genre.map((item) => (
-              <FilterItem key={item} text={item} href="#" />
-            ))}
+            {genres
+              .filter((item, pos) => genres.indexOf(item) === pos)
+              .map((item: string) => (
+                <FilterItem
+                  key={item}
+                  value={item}
+                  onClickFunction={onAddGenre}
+                />
+              ))}
           </S.FilterItems>
         </S.FilterItemsWrapperGenre>
       </S.FilterButtonWrapper>

@@ -6,6 +6,13 @@ export const Navigation = styled.div<{ isDarkTheme: boolean }>`
   background-color: var(--bg-color);
   padding: 20px 0 20px 36px;
   transition: background-color 0.5s ease;
+  
+  @media (max-width: 1470px) {
+    position: absolute;
+    margin-top: -30px;
+    margin-left: -20px;
+    background-color: transparent;
+  }
 `;
 
 export const NavigationLogo = styled.div`
