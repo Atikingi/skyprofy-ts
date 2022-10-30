@@ -64,7 +64,7 @@ const LoginButton = ({ email, password }: Props) => {
       {tokenError && (
         <S.ErrorMessage>{(tokenError as Error).data.detail}</S.ErrorMessage>
       )}
-      <S.LoginButton onClick={(e) => onSubmitForm(e)}>Войти</S.LoginButton>
+      <S.LoginButton type='button' onClick={(e) => onSubmitForm(e)}>Войти</S.LoginButton>
       {isLogin && <Navigate to="/skyprofy-ts/main" replace={true} />}
     </React.Fragment>
   );

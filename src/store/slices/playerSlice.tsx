@@ -34,8 +34,8 @@ export const playerSlice = createSlice({
     getTrackId: (state, action: PayloadAction<number>) => {
       state.id = action.payload;
     },
-    getTracksId: (state, action: PayloadAction<number>) => {
-      state.ids.push(action.payload);
+    getTracksId: (state, action: PayloadAction<string>) => {
+      state.ids.push(Number(action.payload));
     },
     clearTracksId: (state) => {
       state.ids = [];
