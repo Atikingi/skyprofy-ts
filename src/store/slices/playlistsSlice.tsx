@@ -3,12 +3,14 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface Props {
   id: string,
-  name: string
+  name: string,
+  isShow: boolean
 }
 
 const initialState: Props = {
   id: '1',
-  name: ''
+  name: '',
+  isShow: false
 };
 
 export const playlistsSlice = createSlice({
@@ -20,9 +22,12 @@ export const playlistsSlice = createSlice({
     },
     getPlaylistName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
+    },
+    showMenu: (state) => {
+      state.isShow = !state.isShow;
     }
   }
 });
 
-export const { getPlaylistId, getPlaylistName } = playlistsSlice.actions;
+export const { getPlaylistId, getPlaylistName, showMenu } = playlistsSlice.actions;
 export default playlistsSlice.reducer;

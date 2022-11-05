@@ -6,9 +6,13 @@ export const CenterBlock = styled.div`
   padding: 20px 40px 20px 111px;
 `;
 
-export const CenterBlockContent = styled.div`
+export const CenterBlockContent = styled.section`
   display: flex;
   flex-direction: column;
+  
+  @media (max-height:1280px) {
+    max-height: calc(64vh - 150px);
+  }
 `;
 
 export const CenterBlockTitle = styled.h2<{isDarkTheme: boolean}>`

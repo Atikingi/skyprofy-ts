@@ -5,9 +5,18 @@ const COLORS = {
   'sidebar-avatar': '#313131'
 };
 
-export const Sidebar = styled.div`
+export const Sidebar = styled.aside<{isDarkTheme: boolean, isShow: boolean}>`
+  --color: ${props => props.isDarkTheme ? '#181818' : '#ffffff'};
+  --position-right: ${props => props.isShow ? '0' : '-100%'};
   max-width: 418px;
   padding: 20px 90px 20px 78px;
+  transition: right 0.5s;
+
+  @media (max-width: 1889px) {
+    position: absolute;
+    background-color: var(--color);
+    right: var(--position-right);
+  }
 `;
 
 export const SidebarBlock = styled.div`
