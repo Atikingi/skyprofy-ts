@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Navigation = styled.div<{ isDarkTheme: boolean }>`
+export const Navigation = styled.section<{ isDarkTheme: boolean }>`
   --bg-color: ${props => props.isDarkTheme ? '#181818' : '#FFFFFF'};
   width: 244px;
   background-color: var(--bg-color);

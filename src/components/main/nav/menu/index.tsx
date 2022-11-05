@@ -24,8 +24,8 @@ const Menu = ({ menuActive }: ShowHideMenu) => {
 
   const onLogout = () => {
     dispatch(setLogout());
-    document.cookie = 'token=; path=/; expires=-1';
-    document.cookie = 'username=; path=/; expires=-1';
+    document.cookie = 'token=; max-age=-1';
+    document.cookie = 'username=; max-age=-1';
   };
 
   return (
