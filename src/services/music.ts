@@ -6,7 +6,7 @@ export const musicApi = createApi({
   reducerPath: 'musicApi',
   tagTypes: ['Tracks'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://51.250.95.23:8000',
+    baseUrl: 'https://painassasin.online/',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {
